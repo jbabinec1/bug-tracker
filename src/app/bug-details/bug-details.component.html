@@ -1,0 +1,21 @@
+<div class="bug-details-container">
+    <br>
+    <button routerLink="/list"> Back </button>
+    <table>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Reporter</th>
+          <th>Severity </th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td> {{  bugData?.title  }}  </td>
+          <td> {{  bugData?.description }} </td>
+          <td>  {{ bugData?.reporter  }}  </td>
+          <td>  {{ bugData?.severity  }} </td>
+          <td>  {{ bugData?.status    }} </td>
+        </tr> 
+      </table>
+
+  </div>

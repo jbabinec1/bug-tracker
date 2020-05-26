@@ -14,32 +14,16 @@ export class AppComponent {
  json;
   constructor(private http: HttpClient, private bugService: BugService){
 
- /*   this.http.post(this.url, this.postData).toPromise().then((data:any) => {
-      console.log(data.json.test);
-      this.json = JSON.stringify(data.json);
-    }) */
 
   }
 
   ngOnInit() {
 
-  this.bugService.createBug().subscribe(bug => {
-
-  this.postData = bug;
-
-  })
 
   }
 
 
-  postData = {
-    first: 'Bug',
-    last: 'Sonion lololol'
-  }
-
-  
-
-
+ 
 
 
 

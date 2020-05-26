@@ -1,0 +1,25 @@
+import mongoose from 'mongoose';
+//const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+let Bug = new Schema({
+    title: {
+        type: String
+    },
+    reporter: {
+        type: String 
+    },
+    description: {
+        type: String
+    },
+    severity: {
+        type: String
+    },
+    status: {
+        type: String,
+        default: 'Open'
+    }
+});
+
+export default mongoose.model('Bug', Bug);
