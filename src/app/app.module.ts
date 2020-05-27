@@ -20,6 +20,7 @@ import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BugDetailsComponent } from './bug-details/bug-details.component';
+import { IssuesComponent } from './issues/issues.component';
 
 //import { RouterModule, Routes } from '@angular/router';
 
@@ -33,7 +34,8 @@ import { BugDetailsComponent } from './bug-details/bug-details.component';
     ListComponent,
     CreateComponent,
     EditComponent,
-    BugDetailsComponent
+    BugDetailsComponent,
+    IssuesComponent
   ],
   imports: [
     BrowserModule,
