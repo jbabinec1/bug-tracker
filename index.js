@@ -81,7 +81,7 @@ router.route('/bugs/update/:id').post((req, res) => {
           bug.title = req.body.title;
           bug.reporter = req.body.reporter;
           bug.description = req.body.description;
-          bug.severity = req.body.severity;
+          bug.type = req.body.type;
           bug.status = req.body.status;
 
           bug.save().then(bug => {

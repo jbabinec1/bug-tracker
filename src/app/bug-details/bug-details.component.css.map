@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EAEF,KAAK,EAAE,IAAI;CACd;;AAGD,AAAA,KAAK,CAAC,EAAE,CAAC;EAEL,UAAU,EAAE,MAAM;CACrB;;AAED,AAAA,KAAK,CAAC,EAAE,CAAC;EACL,cAAc,EAAE,GAAG;CACtB;;AAED,AAAA,EAAE,EAAE,EAAE,CAAC;EACJ,UAAU,EAAE,iBAAiB;EAC7B,WAAW,EAAE,IAAI;CAEnB",
+    "sources": [
+        "bug-details.component.scss"
+    ],
+    "names": [],
+    "file": "bug-details.component.css"
+}

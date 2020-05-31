@@ -1,0 +1,35 @@
+.bug-list-container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1012px;
+}
+
+.bug-list-container .form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bug-list-container .form-container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bug-list-container .table {
+  width: 100%;
+}
+
+.bug-list-container .table th.mat-header-cell {
+  text-align: center;
+  font-size: 13px;
+}
+
+.bug-list-container .table a:visited {
+  color: #0052cc;
+}
+
+.bug-list-container .new-issue {
+  background-color: #cf992d;
+}
+/*# sourceMappingURL=list.component.css.map */

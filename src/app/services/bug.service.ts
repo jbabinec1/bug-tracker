@@ -38,12 +38,12 @@ getBugById(id) {
 
 
 
-addBug(title, reporter, description, severity, status) {
+addBug(title, reporter, description, type, status) {
   const bug = {
     title: title,
     reporter: reporter,
     description: description,
-    severity: severity,
+    type: type,
     status: status
   };
   return this.http.post('http://localhost:3000/bugs/add', bug);

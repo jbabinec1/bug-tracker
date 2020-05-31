@@ -4,7 +4,7 @@ export interface Bug {
     title: String;
     resporter: String;
     description: String;
-    severity: String;
+    type: String;
     status: String;
     
 }

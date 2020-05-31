@@ -21,6 +21,8 @@ import { EditComponent } from './components/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BugDetailsComponent } from './bug-details/bug-details.component';
 import { IssuesComponent } from './issues/issues.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 //import { RouterModule, Routes } from '@angular/router';
 
@@ -52,7 +54,9 @@ import { IssuesComponent } from './issues/issues.component';
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule
     
   ],
   providers: [BugService],
