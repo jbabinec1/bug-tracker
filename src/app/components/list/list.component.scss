@@ -1,8 +1,55 @@
+.bug-list-container {
+
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1012px;
+    
+
+    .form-container {
+        display: flex;
+        width: 65%;
+
+        .input {
+            width: 100%;
+        }
+
+        .button-container {
+            display: flex;
+            width: 77%;
+            justify-content: flex-end;
+        }
+
+    form {
+        display: flex;
+    }
+    }
+
 .table {
     width: 100%;
+
+    
+
+    th.mat-header-cell {
+        text-align: center;
+        font-size: 13px;
+    }   
+
+    a:visited {
+        color: #0052cc;
+    }
+
+
 }
 
 
-th.mat-header-cell {
-    text-align: center;
+.new-issue {
+
+    background-color: rgb(207, 153, 45);
 }
+
+
+
+} //bug list container end
+
+
+

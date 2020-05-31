@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+}
+
+table tr {
+  text-align: center;
+}
+
+table th {
+  padding-bottom: 5px;
+}
+
+td, th {
+  border-top: 1px solid #dddddd;
+  padding-top: 10px;
+}
+/*# sourceMappingURL=bug-details.component.css.map */

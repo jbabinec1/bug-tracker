@@ -19,7 +19,7 @@ export class BugDetailsComponent implements OnInit {
 
   bug: Bug[]
 
-  displayedColumns = ['title', 'description', 'reporter', 'severity', 'status'];
+  displayedColumns = ['title', 'description', 'reporter', 'type', 'status'];
 
   id: String;
   

@@ -13,7 +13,7 @@ let Bug = new Schema({
     description: {
         type: String
     },
-    severity: {
+    type: {
         type: String
     },
     status: {

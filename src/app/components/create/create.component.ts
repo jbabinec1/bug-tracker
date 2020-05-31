@@ -19,7 +19,7 @@ export class CreateComponent implements OnInit {
       title: ['', Validators.required],
       reporter: '',
       description: '',
-      severity: '',
+      type: '',
       status: ''
     });
 
@@ -27,8 +27,8 @@ export class CreateComponent implements OnInit {
 
 
 
-  addBug(title, reporter, description, severity, status) {
-    this.bugService.addBug(title, reporter, description, severity, status).subscribe(() => {
+  addBug(title, reporter, description, type, status) {
+    this.bugService.addBug(title, reporter, description, type, status).subscribe(() => {
       this.router.navigate(['/list']);
     });
   }
