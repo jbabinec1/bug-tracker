@@ -7,6 +7,8 @@ const port = 3000;
 var bug = require('./bug');
 var path = require('path');
 import Bug from './bug';
+const dotenv = require('dotenv'); 
+dotenv.config({path: './config.env'});
 
 const app = express();
 const router = express.Router();
@@ -29,12 +31,18 @@ const router = express.Router();
 
 //27017
 
+let env = process.env.Database;
 
- mongoose.connect('mongodb://127.0.0.1:27017/bugs?authSource=admin', { useNewUrlParser: true, useUnifiedTopology: true});
+
+ mongoose.connect(env, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true});
  const connection = mongoose.connection; 
  connection.once('open', () => {
   console.log('mongodb connection established')
 })
+
+//mongodb://127.0.0.1:27017/bugs?authSource=admin   local db
+
+//mongodb+srv://jared:honey2856@cluster0-jfv17.mongodb.net/Issues?retryWrites=true&w=majority   hosted db
 
 
 
