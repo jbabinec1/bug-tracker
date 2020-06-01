@@ -42,8 +42,6 @@ let env = process.env.Database;
 
 //mongodb://127.0.0.1:27017/bugs?authSource=admin   local db
 
-//mongodb+srv://jared:honey2856@cluster0-jfv17.mongodb.net/Issues?retryWrites=true&w=majority   hosted db
-
 
 
 //Add new bug document to collection
