@@ -23,6 +23,7 @@ import { BugDetailsComponent } from './bug-details/bug-details.component';
 import { IssuesComponent } from './issues/issues.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
 
 //import { RouterModule, Routes } from '@angular/router';
 
@@ -37,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     CreateComponent,
     EditComponent,
     BugDetailsComponent,
-    IssuesComponent
+    IssuesComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
