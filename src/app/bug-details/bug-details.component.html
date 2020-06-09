@@ -1,3 +1,5 @@
+
+
 <div class="bug-details-container">
     <br>
     <div class="top-details-nav-container"> 
@@ -7,7 +9,58 @@
      
       </div> <!--button container end-->
     </div>
-    <table>
+
+    <div class="details-contain">  
+  
+    <div class="outer-inner-container"> 
+    <div class="inner-details-container"> 
+    <div class="header-container"> <h1 class="issue-title"> <span> {{bugData?.title}} </span></h1>  
+  </div>
+  <div class="reporter-type-container">  <p class="reporter">  reported by {{ bugData?.reporter  }} </p>  
+  <div class="type-container"> <span style="padding-right:25px;"> {{ bugData?.type  }}  </span> <span> {{ bugData?.status }}  </span>    </div>
+  
+  </div>
+
+     <mat-divider></mat-divider>
+    <div class="content-body"> {{ bugData?.description }}  </div>
+    </div>
+    </div>
+
+<mat-divider> </mat-divider>
+
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Write comment</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createComment" class="create-comment">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Reporter" formControlName="reporter" #reporter>
+
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Description" formControlName="description" #description>
+      </mat-form-field>
+   
+
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit" (click)="addComment(reporter.value, description.value)" [disabled]="createComment.pristine || createComment.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>
+
+  </div>
+
+</div>
+
+
+  <!--    <table>
         <tr>
           <th>Title</th>
           <th>Description</th>
@@ -22,6 +75,4 @@
           <td>  {{ bugData?.type  }} </td>
           <td>  {{ bugData?.status    }} </td>
         </tr> 
-      </table>
-
-  </div>
+      </table>-->

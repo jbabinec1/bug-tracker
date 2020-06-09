@@ -4,6 +4,7 @@ import { BugService } from '/Users/jaredbabinec/Documents/bug-test/bug-test/src/
 import { Observable} from 'rxjs';
 import { Router } from '@angular/router';
 import { Bug  } from '/Users/jaredbabinec/Documents/bug-test/bug-test/src/app/Bug';
+import { Comment } from '/Users/jaredbabinec/Documents/bug-test/bug-test/comment.js';
 import { RouterModule } from '@angular/router';
 
 import { MatTableDataSource } from '@angular/material/table';
@@ -18,6 +19,7 @@ import {MatTableModule} from '@angular/material/table';
 export class ListComponent implements OnInit {
 
   bug: Bug[]
+  comment: Comment[];
 
   displayedColumns = ['title', 'type', 'status', 'reporter', 'actions'];
   
@@ -25,11 +27,17 @@ export class ListComponent implements OnInit {
   constructor(private http: HttpClient, private bugService: BugService, private router: Router) { }
 
   @Input() public bugData: any = [];
+  @Input() public commentData: any = [];
+
+  id;
+  reporter;
+  description;
   
    
   ngOnInit(): void {
 
     this.fetchBugs();
+    //this.fetchComment(this.id, this.reporter, this.description);
  
   }
 
@@ -39,6 +47,14 @@ export class ListComponent implements OnInit {
     this.bugService.getBugs().subscribe((bugs: Bug[]) => {
     this.bugData = new MatTableDataSource(bugs);
       console.log(bugs);   
+      }) 
+  }
+
+
+  fetchComment(reporter, description) {
+    this.bugService.addComment(reporter, description).subscribe((comment: Comment[]) => {
+    this.commentData = comment;
+      console.log(comment);   
       }) 
   }
 

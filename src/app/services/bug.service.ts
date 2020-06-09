@@ -18,22 +18,25 @@ export class BugService {
   url = 'http://localhost:3000';
   testUrl = `/bug`;
 
-
- /* createBug(): Observable<any> { 
-  let getHeaders = new HttpHeaders({'CONTENT-TYPE': 'application/json'}); 
-  return this.http.post('http://127.0.0.1:3000/bug', JSON.parse(JSON.stringify(this.postData)), { headers: getHeaders}); 
-
-} */
-
+  id;
 
 getBugs(): Observable<Bug> {
 let getHeaders = new HttpHeaders({'CONTENT-TYPE': 'application/json'}); 
 return this.http.get('http://localhost:3000/bugs/'); 
 }
 
+getComments(): Observable<any> {
+  let getHeaders = new HttpHeaders({'CONTENT-TYPE': 'application/json'}); 
+  return this.http.get('http://localhost:3000/comments/'); 
+}
+
 
 getBugById(id) {
   return this.http.get(`http://localhost:3000/bugs/${id}`);
+}
+
+getCommentById(id){
+  return this.http.get(`http://localhost:3000/comments/${id}`); 
 }
 
 
@@ -48,6 +51,31 @@ addBug(title, reporter, description, type, status) {
   };
   return this.http.post('http://localhost:3000/bugs/add', bug);
 }
+
+
+ addComment(reporter, description) {
+  const comment = {
+    
+    reporter: reporter,
+    description: description,
+  };
+  return this.http.post(`http://localhost:3000/comments/add`, comment);
+} 
+
+
+
+// Test post comment... From the youtube
+
+postComment(id, comment){
+const commentData = {
+  id: id,
+  comment: comment
+}
+return this.http.post(`http://localhost:3000/comment`, commentData);
+} 
+
+
+
 
 
 deleteBug(id) {

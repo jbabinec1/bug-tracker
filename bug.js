@@ -19,7 +19,11 @@ let Bug = new Schema({
     status: {
         type: String,
         default: 'Open'
-    }
+    },
+    comments: [{
+       comment: { type: String },
+       commenter: { type: String }
+    }]
 });
 
 export default mongoose.model('Bug', Bug);

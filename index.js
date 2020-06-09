@@ -7,6 +7,8 @@ const port = 3000;
 var bug = require('./bug');
 var path = require('path');
 import Bug from './bug';
+import Comment from './comment';
+import { retryWhen } from 'rxjs-compat/operator/retryWhen';
 const dotenv = require('dotenv'); 
 dotenv.config({path: './config.env'});
 
@@ -56,6 +58,10 @@ router.route('/bugs/add').post((req, res) => {
       });
 });
 
+
+
+
+
 // Get list of bugs 
 router.route('/bugs/').get((req, res) => {
   Bug.find((err, bugs) => {
@@ -67,6 +73,53 @@ router.route('/bugs/').get((req, res) => {
   });
 });
 
+
+// Get list of comments
+router.route('/comments/').get((req, res) => {
+  Comment.find((err, comments) => {
+      if (err)
+          console.log(err);
+      else
+          res.json(comments);
+          
+  });
+});
+
+//Find comments for specific bug..
+router.route('/comments/:id').get((req, res) => {
+  Comment.findById(req.params.id, (err, bug) => {
+    if (err)
+        console.log(err);
+    else
+        res.json(bug);
+})
+
+});
+
+
+  router.route('/comments/add').post((req, res) => {
+  
+  let comment = new Comment(req.body);
+  comment.save()
+      .then(comment => {
+          res.status(200).json({'comment': 'Added successfully mehhhhh'});
+          console.log(comment)
+      })
+      .catch(err => {
+          res.status(400).send('Failed to create new record');
+      });
+
+    
+
+  
+}); 
+
+
+
+
+
+
+
 //Get one specific bug 
 router.route('/bugs/:id').get((req, res) => {
   Bug.findById(req.params.id, (err, bug) => {
@@ -76,6 +129,7 @@ router.route('/bugs/:id').get((req, res) => {
           res.json(bug);
   })
 });
+
 
 
 // Update or edit bugs 
@@ -111,28 +165,42 @@ router.route('/bugs/delete/:id').get((req, res) => {
 
 
 
-/* Old way of routing possibly .. hmmmmm
-app.post('/bug', function (request, response) {  
-response.send(request.body);
 
-  }) */
-
-
-/*  Don't delete this yet.. but probably don't need it
-
-app.get('/', function(req, res){
-  console.log('reloading');
-  res.sendFile('src/index.html', {root: __dirname})
-}) */  
-
-
-
-
- /* app.use('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, './src/index.html'));
- }); 
+// Test posting to bug details .. from the youtube ..
  
- */
+router.route('/comment').post((req, res) => {
+
+  if(!req.body.comment) {
+    res.json({sucess: false, message: "no comment exists" });
+
+  } else {
+    if(!req.body.id){
+      res.json({sucess: false, messsage: "no bug id provided"});
+    } else{
+      Bug.findOne({_id: req.body.id});
+    } if(err) {
+      res.json({success: false, message: "Invalid bug id"})
+
+    } else{
+      bug.comments.push({
+        comment: req.body.comment,
+        commenter: req.body.commenter
+      });
+      bug.save((err)=>{
+        if(err) {
+          res.json({success: false, message: "bug not saved"});
+        } else {
+          res.json({sucess: true, message: "bug saved sonion"});
+        }
+      });
+    }
+  }
+
+}); 
+
+
+
+
 
  
 
