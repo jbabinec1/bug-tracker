@@ -166,8 +166,9 @@ router.route('/bugs/delete/:id').get((req, res) => {
 
 
 
-// Test posting to bug details .. from the youtube ..
- 
+// my own shitty endpoint
+
+ /*
 router.route('/comment').post((req, res) => {
 
   if(!req.body.comment) {
@@ -177,26 +178,87 @@ router.route('/comment').post((req, res) => {
     if(!req.body.id){
       res.json({sucess: false, messsage: "no bug id provided"});
     } else{
-      Bug.findOne({_id: req.body.id});
-    } if(err) {
+      Bug.findOne({ _id: req.body.id }, (err, bug) => {
+      if (err) {
       res.json({success: false, message: "Invalid bug id"})
 
-    } else{
+    } else {
+
+      if (!bug) {
+        res.json({ success: false, message: 'Bug not found.' }); // Return error message
+      }
+    
+    else {
       bug.comments.push({
         comment: req.body.comment,
         commenter: req.body.commenter
       });
-      bug.save((err)=>{
+      bug.save((err)=> {
         if(err) {
           res.json({success: false, message: "bug not saved"});
         } else {
           res.json({sucess: true, message: "bug saved sonion"});
         }
+        
+      });
+
+    } //else above comments.push
+
+  } //  If bug isn't invalid  
+
+}) // above req.body.id
+
+}
+
+  }
+
+});  */
+
+
+
+// Code that actually works and doesn't look like complete shit 
+
+router.post('/comment', (req, res) => {
+  // Check if comment was provided in request body
+  if (!req.body.comment) {
+    res.json({ success: false, message: 'No comment provided' }); // Return error message
+  } else {
+    // Check if id was provided in request body
+    if (!req.body.id) {
+      res.json({ success: false, message: 'No id was provided' }); // Return error message
+    } else {
+      // Use id to search for bug in database
+      Bug.findOne({ _id: req.body.id }, (err, bug) => {
+        // Check if error was found
+        if (err) {
+          res.json({ success: false, message: 'Invalid bug id' }); // Return error message
+        } else {
+          // Check if id matched the id of any blog post in the database
+          if (!bug) {
+            res.json({ success: false, message: 'Bug not found.' }); // Return error message
+          } else {
+                  // Add the new comment to the blog post's array
+                  bug.comments.push({
+                    comment: req.body.comment, // Comment field
+                    commenter: req.body.commenter // Person who commented
+                  });
+                  // Save blog post
+                  bug.save((err) => {
+                    // Check if error was found
+                    if (err) {
+                      res.json({ success: false, message: 'Something went wrong.' }); // Return error message
+                    } else {
+                      res.json({ success: true, message: 'Comment saved' }); // Return success message
+                    }
+                  });         
+          }
+        }
       });
     }
   }
+});  // End of me being tired */
 
-}); 
+
 
 
 

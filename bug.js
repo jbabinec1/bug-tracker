@@ -20,6 +20,7 @@ let Bug = new Schema({
         type: String,
         default: 'Open'
     },
+
     comments: [{
        comment: { type: String },
        commenter: { type: String }

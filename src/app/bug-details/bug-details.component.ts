@@ -19,7 +19,7 @@ import {MatTableModule} from '@angular/material/table';
 export class BugDetailsComponent implements OnInit {
 
   bug: Bug[]
-  comment: Comment[];
+  //comment: Comment[];
 
   displayedColumns = ['title', 'description', 'reporter', 'type', 'status'];
 
@@ -30,22 +30,22 @@ export class BugDetailsComponent implements OnInit {
   time = new Date().toString();
   newComment = [];
 
-  createComment: FormGroup;
-  
-  
-  
+  //createComment: FormGroup;
 
-  updateForm: FormGroup;
+  commentForm: FormGroup;
+  
+  
+  
 
   constructor(private http: HttpClient, private bugService: BugService, private router: Router,  private route: ActivatedRoute, private fb: FormBuilder) {
 
 
-    this.createComment = this.fb.group({
+   //this.createCommentForm();
 
-      reporter: '',
-      description: '',
-      
-    });
+   this.commentForm = this.fb.group({
+    comment: '',
+    commenter: '',
+  })
 
 
    }
@@ -70,7 +70,7 @@ export class BugDetailsComponent implements OnInit {
   this.route.params.subscribe(params => {
     this.id = params.id;
     this.fetchBug(this.id);   
-    this.fetchComments();
+    //this.fetchComments();
     
   })  
   }
@@ -102,10 +102,6 @@ fetchComments(){
   })
 }
 
-//Write function for getting just one comment by id.. 
-fetchComment(id){
-  //
-}
 
 
 
@@ -119,10 +115,34 @@ fetchComment(id){
   }
 
 
-  //test add comment
 
-  postComment(id){
 
+  //test add comment .. from the youtube
+
+  postComment(id) {
+
+    let comment = this.commentForm.get('comment').value; 
+    let commenter = this.commentForm.get('commenter').value; 
+    this.bugService.postComment(id, comment, commenter).subscribe(data => {
+      this.fetchBug(id);
+      const index = this.newComment.indexOf(id);
+      this.newComment.splice(index, 1);
+    })
+
+  }
+
+  draftComment(id){
+    this.newComment = [];
+    this.newComment.push(id);
+  }
+
+
+
+  createCommentForm(){
+    this.commentForm = this.fb.group({
+      comment: '',
+      commenter: '',
+    })
   }
 
 

@@ -1,6 +1,5 @@
 export interface Bug {
-
-    id: String;
+    comments: any;
     title: String;
     resporter: String;
     description: String;

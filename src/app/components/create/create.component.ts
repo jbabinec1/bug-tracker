@@ -29,6 +29,7 @@ export class CreateComponent implements OnInit {
       type: '',
       status: ''
     });
+    
 
   }
 
@@ -47,6 +48,8 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void { 
   const currentDate = new Date().toISOString().substring(0, 10);
   this.createForm.controls['status'].setValue(currentDate);
+  
+  
   }
 
 }

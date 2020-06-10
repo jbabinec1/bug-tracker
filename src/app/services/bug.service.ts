@@ -66,10 +66,12 @@ addBug(title, reporter, description, type, status) {
 
 // Test post comment... From the youtube
 
-postComment(id, comment){
+postComment(id, comment, commenter) {
+
 const commentData = {
   id: id,
-  comment: comment
+  comment: comment,
+  commenter: commenter
 }
 return this.http.post(`http://localhost:3000/comment`, commentData);
 } 
