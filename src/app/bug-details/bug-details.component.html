@@ -63,7 +63,19 @@
       <button type="submit" (click)="postComment(bugData?._id)" [disabled]="postComment.pristine || postComment.invalid" mat-raised-button color="primary">Post Comment</button>
     </form>
   </div>
+
+  <div>
+    <p>commentsss</p>
+    <li *ngFor="let comment of bugData.comments"> 
+   
+      <strong>   {{comment.commenter}}</strong> : <strong> {{comment.comment}} </strong>
+
+    </li>
+  </div>
+
   </mat-card>
+
+  
 
 
 
