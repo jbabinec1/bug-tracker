@@ -34,34 +34,29 @@
 
 
   <br>
+  <br>
   <mat-card style="box-shadow:none;">
     <section class="mat-typography">
-      <h3>Write commentt</h3>
+      <h3 style="color: #979797">Write comment</h3>
     </section>
    
-    <br>
-    
     <div *ngIf="newComment.indexOf(bugData?._id)"> 
     <form [formGroup]="commentForm" class="create-comment">
 
 
-      <mat-form-field class="field-full-width">
-        <input matInput placeholder="commenter" formControlName="commenter" #commenter>
-      </mat-form-field>
+      <div class="commenter"> 
+      <!----  <mat-form-field class="field-full-width"> -->
+          <input class="commenter-box" matInput placeholder="your name" formControlName="commenter" #commenter>
+        
+        <!--</mat-form-field>-->
+      </div>
+
+  <div class="comment"> <textarea class="comment-box" placeholder="description" formControlName="comment" #comment> </textarea> </div>
 
 
-
-
-
-      <mat-form-field class="field-full-width">
-        <input matInput placeholder="comment" formControlName="comment" #comment>
-
-      </mat-form-field>
-
-
-      <br><br>
+      <br>
       
-      <button type="submit" (click)="postComment(bugData?._id)" [disabled]="postComment.pristine || postComment.invalid" mat-raised-button color="primary">Post Commenttt</button>
+      <button type="submit" (click)="postComment(bugData?._id)" [disabled]="postComment.pristine || postComment.invalid" mat-raised-button color="primary">Post Comment</button>
     <br> <br>
     </form>
   </div>
