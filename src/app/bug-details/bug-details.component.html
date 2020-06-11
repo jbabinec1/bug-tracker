@@ -26,54 +26,56 @@
     </div>
     </div>
 
+
+<div class="outer-comments-container"> 
 <mat-divider> </mat-divider>
 
-
-<div>  
-
+<div class="comment-container">  
 
 
   <br>
-  <mat-card>
+  <mat-card style="box-shadow:none;">
     <section class="mat-typography">
       <h3>Write commentt</h3>
     </section>
-    <mat-divider></mat-divider>
+   
     <br>
     
-    <button mat-raised-button color="accent" type="button" name="button" (click)="draftComment(bugData._id)" [disabled]="newComment.indexOf(bugData._id) > -1"> Post Comment</button>
-<br />
-
     <div *ngIf="newComment.indexOf(bugData?._id)"> 
     <form [formGroup]="commentForm" class="create-comment">
+
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="commenter" formControlName="commenter" #commenter>
+      </mat-form-field>
+
+
+
+
+
       <mat-form-field class="field-full-width">
         <input matInput placeholder="comment" formControlName="comment" #comment>
 
       </mat-form-field>
 
-      <mat-form-field class="field-full-width">
-        <input matInput placeholder="commenter" formControlName="commenter" #commenter>
-      </mat-form-field>
-   
 
-      <mat-divider></mat-divider>
       <br><br>
-      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-
-      <button type="submit" (click)="postComment(bugData?._id)" [disabled]="postComment.pristine || postComment.invalid" mat-raised-button color="primary">Post Comment</button>
+      
+      <button type="submit" (click)="postComment(bugData?._id)" [disabled]="postComment.pristine || postComment.invalid" mat-raised-button color="primary">Post Commenttt</button>
+    <br> <br>
     </form>
   </div>
 
+
+
   <div>
-    <p>commentsss</p>
     <li *ngFor="let comment of bugData.comments"> 
-   
       <strong>   {{comment.commenter}}</strong> : <strong> {{comment.comment}} </strong>
 
     </li>
   </div>
 
-  </mat-card>
+  </mat-card> 
 
   
 
@@ -81,6 +83,8 @@
 
 
 </div>   
+
+</div> <!--Outer comments container-->
 
 
 
