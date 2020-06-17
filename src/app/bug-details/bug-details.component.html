@@ -56,7 +56,8 @@
 
       <br>
       
-      <button type="submit" (click)="postComment(bugData?._id)" [disabled]="postComment.pristine || postComment.invalid" mat-raised-button color="primary">Post Comment</button>
+   <div class="comment-button-container"> <button class="post-comment-btn" type="submit" (click)="postComment(bugData?._id)" [disabled]="postComment.pristine || postComment.invalid" mat-raised-button color="primary">Post Comment</button> </div>
+
     <br> <br>
     </form>
   </div>
@@ -64,8 +65,8 @@
 
 
   <div>
-    <li *ngFor="let comment of bugData.comments"> 
-      <strong>   {{comment.commenter}}</strong> : <strong> {{comment.comment}} </strong>
+    <li style="list-style: none;" *ngFor="let comment of bugData.comments"> 
+   <div class="comment-body"> <strong class="top-comment"> {{comment.commenter}} <span class="comment-date"> {{ bugData?.status }} </span> </strong>  {{comment.comment}}  </div>
 
     </li>
   </div>
