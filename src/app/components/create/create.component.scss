@@ -1,10 +1,46 @@
 form {
 
+
     display: block;
     text-align: center;
+}
+
+.outer-create-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .inner-create-container{
+        max-width: 802px;
+        margin: 0 auto;
+    }
+
+    .status-container {
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
 .mat-form-field {
 
     padding: 15px;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column; 
+    padding: 17px;
+   
+}
+
+.description-field-container {
+    
+    width: 760px;
+    height: 121px;
+}
+
+
+.label-name {
+
+    font-weight: 600;
+    color: #4e5565;
 }

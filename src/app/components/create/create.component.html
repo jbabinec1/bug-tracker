@@ -1,39 +1,59 @@
-<div>
+
+<div class="outer-create-container">
     <br>
-    <mat-card>
+   <!--- <mat-card> -->
+     <div class="inner-create-container"> 
       <section class="mat-typography">
-        <h3>Create A New Bug</h3>
+     <div style="display: flex; justify-content: center;"> <h2>Create A Ticket</h2> </div>
       </section>
       <mat-divider></mat-divider>
       <br>
       <form [formGroup]="createForm" class="create-form">
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Bug Title" formControlName="title" #title>
-  
-        </mat-form-field>
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Reporter" formControlName="reporter" #reporter>
-        </mat-form-field>
-        <mat-form-field class="field-full-width">
-          <textarea matInput placeholder="Description" formControlName="description" #description></textarea>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-select placeholder="Issue type" formControlName="type" #type>
-              <mat-option value="Bug">Bug</mat-option>
-              <mat-option value="Feature">Suggestion</mat-option>
-              <mat-option value="Other">Other</mat-option>
-            </mat-select>
-        </mat-form-field>
 
-        <mat-form-field> 
+        <div class="field-container"> 
+          <label class="label-name">Your name</label>
+        <input formControlName="reporter" #reporter>
+        </div>
+
+      
+      <div class="field-container"> 
+        <div style="width: 100%"> 
+          <label class="label-name"> Issue Type </label>
+          <select placeholder="Issue type" formControlName="type" #type style='max-width:100%; width: 100%; padding: 6px 12px;'>
+            <option value="" disabled selected> - </option>
+            <option value="Bug"> Bug</option>
+            <option value="Feature">Suggestion</option>
+            <option value="Other">Other</option>
+          </select>
+        </div> </div>
+
+          <div class="field-container"> 
+            <label class="label-name"> Subject </label>
+          <input style="padding: 6px 12px" placeholder="Bug Title" formControlName="title" #title>
+          </div>          
+
+
+         <div> 
+           <label class="label-name"> Description </label>
+         <textarea class="description-field-container" placeholder="Description" formControlName="description" #description></textarea> </div>
+
+       
+        
+        <div class="status-container" style="display: none;"> 
+        <mat-form-field style="opacity:0"> 
         <input matInput type="status" formControlName="status" #status readonly>
-    </mat-form-field>
+    </mat-form-field> </div>
         
 
-        <mat-divider></mat-divider>
         <br><br>
         <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-        <button type="submit" (click)="addBug(title.value, reporter.value, description.value, type.value, status.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+        <button style="background-color:#f2a900; color:000"type="submit" (click)="addBug(title.value, reporter.value, description.value, type.value, status.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
       </form>
-    </mat-card>
+
+
+    </div> <!--End of inner container -->
+
+<!--</mat-card> -->
+
+
   </div>
