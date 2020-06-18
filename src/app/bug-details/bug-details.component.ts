@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { BugService } from '.././../../src/app/services/bug.service';
 import { Observable} from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import Bug from './../../../../../bug-test/bug-test/bug.js';
-import { Comment } from './././././.././../../../../bug-test/bug-test/comment.js';
+import Bug from '.././../../src/app/models/bug.js';
+import { Comment } from '.././../../src/app/models/comment.js';
+
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { MatTableDataSource } from '@angular/material/table';

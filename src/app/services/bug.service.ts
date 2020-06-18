@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
-import Bug from '../../../../../bug-test/bug-test/bug.js';
+import Bug from '.././../../src/app/models/bug.js';
+
 
 
 

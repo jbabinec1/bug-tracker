@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BugService } from '../.././../../src/app/services/bug.service';
-import Bug from '../../../../../../bug-test/bug-test/bug.js';
+import Bug from '../../../../src/app/models/bug.js';
+
 
 @Component({
   selector: 'app-create',
