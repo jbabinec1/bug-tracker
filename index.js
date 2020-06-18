@@ -9,8 +9,7 @@ var bug = require('./bug');
 var path = require('path');
 import Bug from './bug';
 import { Comment } from './comment';
-//mport Bug from './bug';
-//import Comment from './comment';
+
 
 import { retryWhen } from 'rxjs-compat/operator/retryWhen';
 const dotenv = require('dotenv'); 
@@ -170,55 +169,6 @@ router.route('/bugs/delete/:id').get((req, res) => {
 
 
 
-// my own shitty endpoint
-
- /*
-router.route('/comment').post((req, res) => {
-
-  if(!req.body.comment) {
-    res.json({sucess: false, message: "no comment exists" });
-
-  } else {
-    if(!req.body.id){
-      res.json({sucess: false, messsage: "no bug id provided"});
-    } else{
-      Bug.findOne({ _id: req.body.id }, (err, bug) => {
-      if (err) {
-      res.json({success: false, message: "Invalid bug id"})
-
-    } else {
-
-      if (!bug) {
-        res.json({ success: false, message: 'Bug not found.' }); // Return error message
-      }
-    
-    else {
-      bug.comments.push({
-        comment: req.body.comment,
-        commenter: req.body.commenter
-      });
-      bug.save((err)=> {
-        if(err) {
-          res.json({success: false, message: "bug not saved"});
-        } else {
-          res.json({sucess: true, message: "bug saved sonion"});
-        }
-        
-      });
-
-    } //else above comments.push
-
-  } //  If bug isn't invalid  
-
-}) // above req.body.id
-
-}
-
-  }
-
-});  */
-
-
 
 // Code that actually works and doesn't look like complete shit 
 
@@ -269,10 +219,13 @@ router.post('/comment', (req, res) => {
 
 
  
+
+app.use('/', router);
+
 app.use(express.static('dist/bug-test'));
+
 app.use('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '/dist/bug-test/index.html'));
 }); 
-app.use('/', router);
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
