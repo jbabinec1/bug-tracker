@@ -4,6 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 const port = 3000;
+porto = process.env.PORT;
 var bug = require('./bug');
 var path = require('path');
 import Bug from './bug';

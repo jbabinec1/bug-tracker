@@ -4,10 +4,22 @@
     margin-left: auto;
     max-width: 1012px;
     
+.outer-form-container {
+
+    background-color: #f6f8fa;
+    margin-bottom: 15px;
+    padding-bottom: 9px;
+    padding-right: 9px;
+    padding-left: 17px;
+    padding-top: 19px;
+    padding-right: 9px; 
+    border-radius: 4px; 
+
 
     .form-container {
         display: flex;
         width: 65%;
+        padding-bottom:20px;
 
         .input {
             width: 100%;
@@ -24,8 +36,14 @@
     }
     }
 
+}
+
+// End of outer-form-container
+
+
 .table {
     width: 100%;
+    background-color: #f6f8fa;
 
     
 

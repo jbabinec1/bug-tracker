@@ -75,7 +75,7 @@ export class BugDetailsComponent implements OnInit {
   })  
   }
 
-
+// Fetch all bugs
 
   fetchBugs() {
     this.bugService.getBugs().subscribe((bugs: Bug[]) => {
@@ -85,6 +85,7 @@ export class BugDetailsComponent implements OnInit {
       }) 
   }  
 
+  //Fetch specific bug by ID 
 
   fetchBug(id) {
     this.bugService.getBugById(id).subscribe((bugs: Bug[]) => {
@@ -95,6 +96,7 @@ export class BugDetailsComponent implements OnInit {
   }
 
 
+//Fetch all comments
 fetchComments(){
   this.bugService.getComments().subscribe((comment: Comment[]) => {
     this.commentData = comment; 
@@ -104,7 +106,7 @@ fetchComments(){
 
 
 
-
+/*
 
   addComment(reporter, description) {
     this.bugService.addComment(reporter, description).subscribe((comment: Comment[]) => {
@@ -112,7 +114,7 @@ fetchComments(){
       this.commentData = comment;
        console.log(comment);
     });
-  }
+  } */
 
 
 
@@ -131,10 +133,12 @@ fetchComments(){
 
   }
 
+
+/*
   draftComment(id){
     this.newComment = [];
     this.newComment.push(id);
-  }
+  } --> */
 
 
 

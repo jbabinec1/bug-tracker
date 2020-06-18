@@ -11,8 +11,9 @@
   
       <div class="bug-list-container">
           <br>
-          <mat-card>
+          <!--<mat-card style="background-color: #f6f8fa">-->
 
+            <div class="outer-form-container"> 
            <div class="form-container"> 
            
         <input class="input" (keyup)="applyFilter($event.target.value)" placeholder="search issue">
@@ -23,11 +24,12 @@
            </div> <!--button container end-->
 
           </div>
+        </div> <!--outer form container end-->
 
+       <!-- <mat-divider></mat-divider> -->
 
-            <br><br>
-            <mat-divider></mat-divider>
-            <br>
+          <mat-card style="background-color: #f6f8fa">
+            
             <table class="table" mat-table [dataSource]="bugData">
               <ng-container matColumnDef="title">
                 <th mat-header-cell *matHeaderCellDef>Summary</th>
