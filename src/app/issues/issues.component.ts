@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BugService } from '/Users/jaredbabinec/Documents/bug-test/bug-test/src/app/services/bug.service';
+import { BugService } from './././../../../src/app/services/bug.service';
 import { Observable} from 'rxjs';
 import { Router } from '@angular/router';
-import { Bug  } from '/Users/jaredbabinec/Documents/bug-test/bug-test/src/app/Bug';
+import Bug from './../../../../../bug-test/bug-test/bug.js';
 
 import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
