@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BugService } from '../.././../../src/app/services/bug.service';
-import { Bug  } from '../../Bug';
+import { Bug  } from '../../../app/bug';
 
 
 @Component({
