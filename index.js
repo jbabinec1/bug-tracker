@@ -269,7 +269,10 @@ router.post('/comment', (req, res) => {
 
 
  
-
+app.use(express.static('dist/bug-test'));
+app.use('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, '/dist/bug-test/index.html'));
+}); 
 app.use('/', router);
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
