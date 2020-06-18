@@ -7,8 +7,8 @@ const port = 3000;
 let porto = process.env.PORT;
 var bug = require('./bug');
 var path = require('path');
-import Bug from '/Users/jaredbabinec/Documents/bug-test/bug-test/src/app/models/bug.js';
-import { Comment } from '/Users/jaredbabinec/Documents/bug-test/bug-test/src/app/models/comment.js';
+import Bug from './bug';
+import { Comment } from './comment';
 //mport Bug from './bug';
 //import Comment from './comment';
 

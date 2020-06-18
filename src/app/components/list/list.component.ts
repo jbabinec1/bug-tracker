@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BugService } from '../.././../../src/app/services/bug.service';
 import { Observable} from 'rxjs';
 import { Router } from '@angular/router';
-import Bug from '../.././../../src/app/models/bug.js';
-import { Comment } from '../.././../../src/app/models/comment.js';
+import { Bug } from '../.././Bug';
+import { Comment } from '../.././comment';
 import { RouterModule } from '@angular/router';
 
 import { MatTableDataSource } from '@angular/material/table';
