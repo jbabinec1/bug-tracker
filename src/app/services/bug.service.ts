@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
-import { Bug } from '../../../Bug';
+import { Bug } from '../Bug';
 
 
 
@@ -21,10 +21,10 @@ export class BugService {
 
   id;
 
-getBugs(): Observable<Bug> {
+/*getBugs(): Observable<Bug> {
 let getHeaders = new HttpHeaders({'CONTENT-TYPE': 'application/json'}); 
 return this.http.get('http://localhost:3000/bugs/'); 
-}
+} */
 
 getComments(): Observable<any> {
   let getHeaders = new HttpHeaders({'CONTENT-TYPE': 'application/json'}); 
