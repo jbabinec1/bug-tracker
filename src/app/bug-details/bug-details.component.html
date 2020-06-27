@@ -25,6 +25,7 @@
     <div class="content-body"> {{ bugData?.description }}  </div>
     </div>
     </div>
+    
 
 
 <div class="outer-comments-container"> 
@@ -35,7 +36,7 @@
 
   <br>
   <br>
-  <mat-card style="box-shadow:none;">
+  <mat-card style="box-shadow:none; width:100%; background-color: #DCDCDC;">
     <section class="mat-typography">
       <h3 style="color: #979797">Write comment</h3>
     </section>
@@ -65,6 +66,8 @@
 
 
   <div>
+    <mat-divider style="width: 85%; left:auto;"></mat-divider> <!---->
+
     <li style="list-style: none;" *ngFor="let comment of bugData.comments"> 
    <div class="comment-body"> <strong class="top-comment"> {{comment.commenter}} <span class="comment-date"> {{ bugData?.status }} </span> </strong>  {{comment.comment}}  </div>
 

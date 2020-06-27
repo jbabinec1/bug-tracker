@@ -43,17 +43,20 @@ td, th {
     margin-left: auto;
     margin-right: auto;
     //max-width: 1012px;
-    width: 65%; //66%;
+    width: 75%; //66%;
     padding-top: 11px;
     padding-left: 18px;
     padding-right: 18px;
     padding-bottom: 60px;
     display: flex;
     flex-direction: column;
+    background-color: #484848;
+    border-radius: 10px;
 
 
     .reporter-type-container {
         display: flex;
+        color: #979797;
     }
 
     .header-container {
@@ -73,6 +76,7 @@ td, th {
 
     .content-body {
         padding-top: 38px;
+        color: #A9A9A9;
     }
 }
 
@@ -86,14 +90,15 @@ td, th {
     .issue-title {
         font-size: 31px!important;
         padding-right: 38px;
+        color: #ffffff;
     }
 
 }
 
 .outer-comments-container {
 
-    max-width: 66%;
-    width: 54%;
+    max-width: 812px;   //66%;
+    //width: 62%;
     margin-left: auto;
     margin-right: auto;
 
@@ -128,6 +133,7 @@ td, th {
     .comment-button-container {
         display: flex; 
         justify-content: flex-end;
+        width: 68%;
     }
 
     .post-comment-btn {

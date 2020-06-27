@@ -148,7 +148,7 @@ a.linky-logo.image.active #path0.logo-active {
 /* Sets border bottom underline when regular nav links are active */
 .item-box .active{
     display: flex;
-    height: 61px;
+    height: 54px;
     align-items: center;
     border-bottom: 3px solid white;
 }
@@ -186,6 +186,7 @@ svg.logo_header {
     display: flex;
     width: 84%;
     justify-content: flex-end; 
+    padding-top: 8px;
 }
 
 
