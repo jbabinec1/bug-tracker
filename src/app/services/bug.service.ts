@@ -84,7 +84,7 @@ return this.http.post(`/comment`, commentData);  // http://localhost:3000/commen
 
 
 deleteBug(id) {
-  return this.http.get(`${this.url}/bugs/delete/${id}`);
+  return this.http.get(`/bugs/delete/${id}`);
 }
 
 
