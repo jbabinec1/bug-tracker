@@ -1,3 +1,25 @@
+.top-details-nav-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 65%;
+  padding-bottom: 12px;
+}
+
+.top-details-nav-container .button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 11%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.top-details-nav-container .button-container .back {
+  background-color: #f2a900;
+}
+
 table {
   width: 100%;
 }
@@ -13,5 +35,138 @@ table th {
 td, th {
   border-top: 1px solid #dddddd;
   padding-top: 10px;
+}
+
+.inner-details-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  padding-top: 11px;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-bottom: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #484848;
+  border-radius: 10px;
+}
+
+.inner-details-container .reporter-type-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #979797;
+}
+
+.inner-details-container .header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 11px;
+}
+
+.inner-details-container .header-container .type-container {
+  padding-top: 5px;
+}
+
+.inner-details-container .reporter {
+  color: #979797;
+  padding-right: 25px;
+}
+
+.inner-details-container .content-body {
+  padding-top: 38px;
+  color: #A9A9A9;
+}
+
+.outer-inner-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1012px;
+}
+
+.outer-inner-container .issue-title {
+  font-size: 31px !important;
+  padding-right: 38px;
+  color: #ffffff;
+}
+
+.outer-comments-container {
+  max-width: 812px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.outer-comments-container .comment-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 101%;
+  margin-left: auto;
+  margin-right: auto;
+  border-top-style: none;
+  width: 99%;
+  padding-top: 32px;
+}
+
+.outer-comments-container .comment-container .comment {
+  padding-top: 8px;
+}
+
+.outer-comments-container .comment-container .commenter-box {
+  width: 442px;
+  padding-bottom: 5px;
+}
+
+.outer-comments-container .comment-container .comment-box {
+  height: 106px;
+  width: 444px;
+}
+
+.outer-comments-container .comment-container .comment-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 68%;
+}
+
+.outer-comments-container .comment-container .post-comment-btn {
+  background-color: #f2a900;
+}
+
+.outer-comments-container .comment-container .comment-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+  padding: 23px;
+}
+
+.outer-comments-container .comment-container .comment-body .comment-date {
+  font-weight: 300;
+  padding-left: 7px;
+}
+
+.outer-comments-container .comment-container .comment-body .top-comment {
+  padding-bottom: 9px;
 }
 /*# sourceMappingURL=bug-details.component.css.map */

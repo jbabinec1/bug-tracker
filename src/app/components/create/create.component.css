@@ -3,7 +3,47 @@ form {
   text-align: center;
 }
 
+.outer-create-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.outer-create-container .inner-create-container {
+  max-width: 802px;
+  margin: 0 auto;
+}
+
+.outer-create-container .status-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
 .mat-form-field {
   padding: 15px;
+}
+
+.field-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 17px;
+}
+
+.description-field-container {
+  width: 760px;
+  height: 121px;
+}
+
+.label-name {
+  font-weight: 600;
+  color: #4e5565;
 }
 /*# sourceMappingURL=create.component.css.map */
