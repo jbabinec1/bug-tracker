@@ -1,7 +1,5 @@
 .mat-toolbar-single-row {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: orange;
+  background-color: #161616;
+  color: grey;
 }
 /*# sourceMappingURL=app.component.css.map */

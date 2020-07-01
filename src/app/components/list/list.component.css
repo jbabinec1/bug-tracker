@@ -4,13 +4,40 @@
   max-width: 1012px;
 }
 
-.bug-list-container .form-container {
+.bug-list-container .outer-form-container {
+  background-color: #484848;
+  margin-bottom: 15px;
+  padding-bottom: 9px;
+  padding-right: 9px;
+  padding-left: 17px;
+  padding-top: 19px;
+  padding-right: 9px;
+  border-radius: 10px;
+}
+
+.bug-list-container .outer-form-container .form-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 65%;
+  padding-bottom: 20px;
 }
 
-.bug-list-container .form-container form {
+.bug-list-container .outer-form-container .form-container .input {
+  width: 100%;
+}
+
+.bug-list-container .outer-form-container .form-container .button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 77%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.bug-list-container .outer-form-container .form-container form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,18 +45,24 @@
 
 .bug-list-container .table {
   width: 100%;
+  background-color: #484848;
 }
 
 .bug-list-container .table th.mat-header-cell {
   text-align: center;
-  font-size: 13px;
+  font-size: 16px;
+  color: #ffffff;
 }
 
 .bug-list-container .table a:visited {
-  color: #0052cc;
+  color: #D3D3D3;
+}
+
+.bug-list-container .table .mat-cell {
+  color: #A9A9A9;
 }
 
 .bug-list-container .new-issue {
-  background-color: #cf992d;
+  background-color: #f2a900;
 }
 /*# sourceMappingURL=list.component.css.map */
