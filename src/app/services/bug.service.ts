@@ -25,7 +25,7 @@ export class BugService {
 //http://localhost:3000/bugs/
 getBugs(): Observable<any> {
 let getHeaders = new HttpHeaders({'CONTENT-TYPE': 'application/json'}); 
-return this.http.get('http://localhost:3000/bugs/');    // http://localhost:3000/bugs/
+return this.http.get('/bugs/');    // http://localhost:3000/bugs/
 } 
 
 getComments(): Observable<any> {
@@ -84,7 +84,7 @@ return this.http.post(`/comment`, commentData);  // http://localhost:3000/commen
 
 
 deleteBug(id) {
-  return this.http.get(`${this.url}/bugs/delete/${id}`);
+  return this.http.get(`/bugs/delete/${id}`);
 }
 
 

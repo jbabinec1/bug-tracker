@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   bug: Bug[]
   comment: Comment[];
 
-  displayedColumns = ['title', 'type', 'status', 'reporter', 'actions'];
+  displayedColumns = ['title', 'type', 'status', 'reporter'];
   
 
   constructor(private http: HttpClient, private bugService: BugService, private router: Router) { }
