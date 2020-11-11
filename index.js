@@ -9,7 +9,6 @@ var path = require('path');
 import Bug from './bug';
 import { Comment } from './comment';
 
-
 import { retryWhen } from 'rxjs-compat/operator/retryWhen';
 const dotenv = require('dotenv'); 
 dotenv.config({path: './config.env'});
@@ -19,6 +18,9 @@ const router = express.Router();
 
  app.use(cors());
  app.use(bodyParser.json());
+
+
+ 
 
   app.use( function (req, res, next){
 

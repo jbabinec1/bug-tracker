@@ -38,10 +38,10 @@
   <br>
   <mat-card style="box-shadow:none; width:100%; background-color: #DCDCDC;">
     <section class="mat-typography">
-      <h3 style="color: #979797">Write comment</h3>
+      <h3 style="color: #979797; padding-left: 23px;">Write comment</h3>
     </section>
    
-    <div *ngIf="newComment.indexOf(bugData?._id)"> 
+    <div class="comment-form-container" *ngIf="newComment.indexOf(bugData?._id)"> 
     <form [formGroup]="commentForm" class="create-comment">
 
 
