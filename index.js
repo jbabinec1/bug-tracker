@@ -8,6 +8,7 @@ var bug = require('./bug');
 var path = require('path');
 import Bug from './bug';
 import { Comment } from './comment';
+import User from './user';
 
 import { retryWhen } from 'rxjs-compat/operator/retryWhen';
 const dotenv = require('dotenv'); 
@@ -20,7 +21,7 @@ const router = express.Router();
  app.use(bodyParser.json());
 
 
- 
+
 
   app.use( function (req, res, next){
 
@@ -63,6 +64,31 @@ router.route('/bugs/add').post((req, res) => {
 });
 
 
+// Get Users
+
+router.route('/users/').get((req, res) => {
+
+ /* Bug.find((err, bugs) => {
+      if (err)
+          console.log(err);
+      else
+          res.json(bugs);
+          
+  }); */
+
+});
+
+//Signup user
+router.route('/signup').post((req, res) => {
+  let user = new User(req.body);
+  user.save()
+      .then(user => {
+          res.status(200).json({'issue': 'Added successfully'});
+      })
+      .catch(err => {
+          res.status(400).send('Failed to create new record');
+      });
+});
 
 
 
@@ -212,6 +238,8 @@ router.post('/comment', (req, res) => {
     }
   }
 });  // End of me being tired */
+
+
 
 
 
