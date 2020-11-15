@@ -9,6 +9,9 @@ var path = require('path');
 import Bug from './bug';
 import { Comment } from './comment';
 import User from './user';
+var jwt = require('jsonwebtoken');
+
+//const catchAsync = require('./../utils/catchAsync');
 
 import { retryWhen } from 'rxjs-compat/operator/retryWhen';
 const dotenv = require('dotenv'); 
@@ -41,6 +44,8 @@ const router = express.Router();
 
 let env = process.env.Database;
 
+let loc = `mongodb://127.0.0.1:27017/bugs?authSource=admin`;
+
  mongoose.connect(env, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true});
  const connection = mongoose.connection; 
  connection.once('open', () => {
@@ -49,7 +54,10 @@ let env = process.env.Database;
 
 //mongodb://127.0.0.1:27017/bugs?authSource=admin   local db
 
-
+const signToken = id => {
+  return jwt.sign({ id }, process.env.JWT_Secret, {expiresIn: '90d'})
+}
+ 
 
 //Add new bug document to collection
 router.route('/bugs/add').post((req, res) => {
@@ -61,6 +69,8 @@ router.route('/bugs/add').post((req, res) => {
       .catch(err => {
           res.status(400).send('Failed to create new record');
       });
+
+
 });
 
 
@@ -68,26 +78,133 @@ router.route('/bugs/add').post((req, res) => {
 
 router.route('/users/').get((req, res) => {
 
- /* Bug.find((err, bugs) => {
+  User.find((err, user) => {
       if (err)
           console.log(err);
       else
-          res.json(bugs);
+          res.json(user);
           
-  }); */
+  }); 
+  
+});
+
+
+//Signup user
+router.route('/signup/').post((req, res) => {
+  let user = new User({
+    name: req.body.name,
+    platform:req.body.platform,
+    password:req.body.password});
+  user.save()
+      .then(user => {
+          res.status(200).json({'user': 'Added successfully', token, data: {user:user}});
+      })
+      .catch(err => {
+          res.status(400).send('Failed to create new user');
+      });
+
+      
+
+      const token = signToken(user._id);
+      //jwt.sign({id: user._id }, process.env.JWT_Secret, {expiresIn: '90d'})
+
+
 
 });
 
-//Signup user
-router.route('/signup').post((req, res) => {
-  let user = new User(req.body);
+/*
+let login = async function (req, res, next) {
+
+  const {name, password} = req.body;
+
+  try {
+
+    if(!name || !password) {
+      return res.status(400).send('Failed to create new user');
+    }
+  
+    const user = await user.findOne({name: name}).select('+password');
+    
+  
+    if(!user || !(await user.correctPassword(password, user.password))) {
+      return res.status(401).send('wrong username or password')
+    }
+  
+    console.log(user);
+  
+  
+    //const token = signToken(user._id);
+  
+  
+  
+  const token = await signToken(user._id);
+  
+    res.status(200).json({
+      status: 'success',
+      token
+    })
+  
+  } catch(err) {
+    console.log(err)
+  }
+
+} */
+
+
+
+
+
+//Login user 
+
+router.route('/login/').post(async(req, res) => {
+
+ 
+  const {name, password} = req.body;
+
+  //try {
+
+  if(!name || !password) {
+    return res.status(400).send('Failed to create new user');
+  }
+
+  let user = await User.findOne({ name }).select('+password');
+  
+
+  if(!user || !(await user.correctPassword(password, user.password))) {
+    return res.status(401).send('wrong username or password')
+  }
+
+  console.log(user);
+
+
+  
+
+const token = await signToken(user._id);
+
+
+  res.status(200).json({
+    status: 'success',
+    token
+  })
+
+  
+
+  /*
+  let user = new User({
+    name: req.body.name,
+    platform:req.body.platform,
+    password:req.body.password});
   user.save()
       .then(user => {
-          res.status(200).json({'issue': 'Added successfully'});
+          res.status(200).json({'user': 'Added successfully', token, data: {user:user}});
       })
       .catch(err => {
-          res.status(400).send('Failed to create new record');
+          res.status(400).send('Failed to create new user');
       });
+
+      const token = jwt.sign({id: user._id }, process.env.JWT_Secret, {expiresIn: '90d'})
+*/
+
 });
 
 
