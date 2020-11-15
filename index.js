@@ -108,49 +108,10 @@ router.route('/signup/').post((req, res) => {
       const token = signToken(user._id);
       //jwt.sign({id: user._id }, process.env.JWT_Secret, {expiresIn: '90d'})
 
-
-
 });
 
-/*
-let login = async function (req, res, next) {
 
-  const {name, password} = req.body;
-
-  try {
-
-    if(!name || !password) {
-      return res.status(400).send('Failed to create new user');
-    }
-  
-    const user = await user.findOne({name: name}).select('+password');
-    
-  
-    if(!user || !(await user.correctPassword(password, user.password))) {
-      return res.status(401).send('wrong username or password')
-    }
-  
-    console.log(user);
-  
-  
-    //const token = signToken(user._id);
-  
-  
-  
-  const token = await signToken(user._id);
-  
-    res.status(200).json({
-      status: 'success',
-      token
-    })
-  
-  } catch(err) {
-    console.log(err)
-  }
-
-} */
-
-
+   
 
 
 
@@ -158,13 +119,11 @@ let login = async function (req, res, next) {
 
 router.route('/login/').post(async(req, res) => {
 
- 
   const {name, password} = req.body;
 
-  //try {
-
+//If no name or password were requested, pls provide user and apss
   if(!name || !password) {
-    return res.status(400).send('Failed to create new user');
+    return res.status(400).send('Please provide username and password!');
   }
 
   let user = await User.findOne({ name }).select('+password');
@@ -174,38 +133,18 @@ router.route('/login/').post(async(req, res) => {
     return res.status(401).send('wrong username or password')
   }
 
-  console.log(user);
+ console.log(user);
 
-
-  
-
-const token = await signToken(user._id);
-
+ const token = await signToken(user._id);
 
   res.status(200).json({
     status: 'success',
     token
   })
-
-  
-
-  /*
-  let user = new User({
-    name: req.body.name,
-    platform:req.body.platform,
-    password:req.body.password});
-  user.save()
-      .then(user => {
-          res.status(200).json({'user': 'Added successfully', token, data: {user:user}});
-      })
-      .catch(err => {
-          res.status(400).send('Failed to create new user');
-      });
-
-      const token = jwt.sign({id: user._id }, process.env.JWT_Secret, {expiresIn: '90d'})
-*/
+ 
 
 });
+
 
 
 
