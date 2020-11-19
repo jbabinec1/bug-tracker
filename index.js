@@ -4,14 +4,17 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 const port = process.env.PORT || 3000;
+const { promisify } = require('util');
+//const util = require('util');
 var bug = require('./bug');
 var path = require('path');
 import Bug from './bug';
 import { Comment } from './comment';
 import User from './user';
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-//const catchAsync = require('./../utils/catchAsync');
+
+const catchAsync = require('./catchAsync');
 
 import { retryWhen } from 'rxjs-compat/operator/retryWhen';
 const dotenv = require('dotenv'); 
@@ -44,6 +47,8 @@ const router = express.Router();
 
 let env = process.env.Database;
 
+ 
+
 let loc = `mongodb://127.0.0.1:27017/bugs?authSource=admin`;
 
  mongoose.connect(env, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true});
@@ -53,10 +58,53 @@ let loc = `mongodb://127.0.0.1:27017/bugs?authSource=admin`;
 })
 
 //mongodb://127.0.0.1:27017/bugs?authSource=admin   local db
+//let secret= 'my-ultra-secure-and-ultra-long-secret';
+
+let secret ='noob-yeah'
 
 const signToken = id => {
-  return jwt.sign({ id }, process.env.JWT_Secret, {expiresIn: '90d'})
+  return jwt.sign({ id }, secret, {expiresIn: '90d'});
 }
+
+
+
+
+//let jwt_token;
+
+let protect = catchAsync(async(req, res, next) =>  {  
+
+  let token;
+  
+  if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+
+
+    token = req.headers.authorization.split(' ')[1];
+
+   
+
+  }
+
+  console.log(token);
+
+
+  if(!token){
+    console.log('Access denied.')
+    return res.status(401).json({'Access': 'denied. Please log in.'});
+  }
+
+  //try {
+
+  //let decoded = await promisify(jwt.verify)(token, secret);
+  //console.log(decoded);
+
+//} catch(err) {
+  //console.log('err')
+//}
+
+  next();
+})
+
+
  
 
 //Add new bug document to collection
@@ -76,7 +124,7 @@ router.route('/bugs/add').post((req, res) => {
 
 // Get Users
 
-router.route('/users/').get((req, res) => {
+router.route('/users/').get(protect,(req, res) => {
 
   User.find((err, user) => {
       if (err)
@@ -86,7 +134,24 @@ router.route('/users/').get((req, res) => {
           
   }); 
   
-});
+}); 
+
+
+
+/*
+
+app.get('/users/', protect, (request, res, err) => {
+
+  User.find((err, user) => {
+    if (err)
+        console.log(err);
+    else
+        res.json(user);
+        
+}); 
+
+
+}) */
 
 
 //Signup user
@@ -95,6 +160,8 @@ router.route('/signup/').post((req, res) => {
     name: req.body.name,
     platform:req.body.platform,
     password:req.body.password});
+
+    //const token = signToken(user._id);
   user.save()
       .then(user => {
           res.status(200).json({'user': 'Added successfully', token, data: {user:user}});
@@ -106,6 +173,8 @@ router.route('/signup/').post((req, res) => {
       
 
       const token = signToken(user._id);
+
+      
       //jwt.sign({id: user._id }, process.env.JWT_Secret, {expiresIn: '90d'})
 
 });
@@ -294,6 +363,41 @@ router.post('/comment', (req, res) => {
     }
   }
 });  // End of me being tired */
+
+
+
+/*
+  async function protect(req, res, next) =>  {  
+
+  let token;
+
+  try {
+
+  if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+
+    token = req.headers.authorization.split(' ')[1];
+
+  }
+
+
+  if(!token){
+    console.log('Access denied.')
+    return res.status(401).json({'Access': 'denied. Please log in.'});
+    
+  }
+
+  
+
+  //const decoded = await promisify(jwt.verify)(token, process.env.JWT_Secret);
+  //const decoded = await promisify(jwt.verify)(token, process.env.JWT_Secret);
+decode(token)
+
+} catch (err) {
+  console.log('hmmm')
+}
+
+  next();
+} */
 
 
 
