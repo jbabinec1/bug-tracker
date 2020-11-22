@@ -58,9 +58,9 @@ let loc = `mongodb://127.0.0.1:27017/bugs?authSource=admin`;
 })
 
 //mongodb://127.0.0.1:27017/bugs?authSource=admin   local db
-//let secret= 'my-ultra-secure-and-ultra-long-secret';
+//let secret= '';
 
-let secret ='noob-yeah'
+let secret ='my-ultra-secure-and-ultra-long-secret'
 
 const signToken = id => {
   return jwt.sign({ id }, secret, {expiresIn: '90d'});
@@ -68,41 +68,42 @@ const signToken = id => {
 
 
 
+let token;
 
-//let jwt_token;
 
 let protect = catchAsync(async(req, res, next) =>  {  
 
-  let token;
-  
   if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-
 
     token = req.headers.authorization.split(' ')[1];
 
-   
-
   }
 
-  console.log(token);
-
-
-  if(!token){
+  if(!token) {
     console.log('Access denied.')
     return res.status(401).json({'Access': 'denied. Please log in.'});
   }
 
-  //try {
 
-  //let decoded = await promisify(jwt.verify)(token, secret);
-  //console.log(decoded);
+  //Verify token sent in header is valid
+  let decoded = await promisify(jwt.verify)(token, secret);
+  console.log(decoded);
 
-//} catch(err) {
-  //console.log('err')
-//}
 
+  //Check if user still exists 
+  const freshUser = await User.findById(decoded.id);
+
+  if(!freshUser) {
+    return res.status(401).json({'Error': 'User belonging to token no longer exists'});
+  }
+
+
+
+
+ req.user = freshUser;
   next();
 })
+
 
 
  
@@ -123,7 +124,7 @@ router.route('/bugs/add').post((req, res) => {
 
 
 // Get Users
-
+/*
 router.route('/users/').get(protect,(req, res) => {
 
   User.find((err, user) => {
@@ -134,11 +135,11 @@ router.route('/users/').get(protect,(req, res) => {
           
   }); 
   
-}); 
+}); */
 
 
 
-/*
+
 
 app.get('/users/', protect, (request, res, err) => {
 
@@ -151,7 +152,7 @@ app.get('/users/', protect, (request, res, err) => {
 }); 
 
 
-}) */
+}) 
 
 
 //Signup user
@@ -364,40 +365,6 @@ router.post('/comment', (req, res) => {
   }
 });  // End of me being tired */
 
-
-
-/*
-  async function protect(req, res, next) =>  {  
-
-  let token;
-
-  try {
-
-  if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-
-    token = req.headers.authorization.split(' ')[1];
-
-  }
-
-
-  if(!token){
-    console.log('Access denied.')
-    return res.status(401).json({'Access': 'denied. Please log in.'});
-    
-  }
-
-  
-
-  //const decoded = await promisify(jwt.verify)(token, process.env.JWT_Secret);
-  //const decoded = await promisify(jwt.verify)(token, process.env.JWT_Secret);
-decode(token)
-
-} catch (err) {
-  console.log('hmmm')
-}
-
-  next();
-} */
 
 
 

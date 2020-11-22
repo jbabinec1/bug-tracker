@@ -6,6 +6,9 @@ import bcrypt from 'bcryptjs';
 
 const Schema = mongoose.Schema;
 
+let permissions = ["user", "admin"];
+let user = "user";
+
 let User = new Schema({
     name: {
         type: String,
@@ -15,7 +18,12 @@ let User = new Schema({
         type: String 
     },
 
-    photo: String,
+    //photo: String,
+    role: {
+        type: String,
+        enum : ['user','admin'],
+        default: 'user'
+    },
     
     password: {
         type: String,
