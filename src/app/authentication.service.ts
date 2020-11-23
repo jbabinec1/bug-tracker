@@ -16,8 +16,10 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient,public router: Router, private http: HttpClient) { }
 
 
+  getAccessToken() {
+    return localStorage.getItem('access_token');
+  }
 
-  
 
 registerUser(username: Username): Observable<any> {
 
@@ -26,6 +28,8 @@ registerUser(username: Username): Observable<any> {
 )
 
 }
+
+
 
 
 

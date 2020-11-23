@@ -24,6 +24,7 @@ import { IssuesComponent } from './issues/issues.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
+import { AuthenticationService } from './authentication.service';
 
 //import { RouterModule, Routes } from '@angular/router';
 
@@ -61,7 +62,7 @@ import { HeaderComponent } from './components/header/header.component';
     FormsModule
     
   ],
-  providers: [BugService],
+  providers: [BugService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
