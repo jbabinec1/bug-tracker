@@ -21,9 +21,15 @@ export class AuthenticationService {
   }
 
 
-registerUser(username: Username): Observable<any> {
+registerUser(name, password, platform): Observable<any> {
 
-  return this.http.post('/signup/', username).pipe(
+  const user = {
+    name: name,
+    password: password,
+    platform: platform,
+  };
+
+  return this.http.post('http://localhost:3000/signup', user).pipe(
     catchError(this.handleError)
 )
 

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -25,6 +25,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthenticationService } from './authentication.service';
+import { AuthInterceptor } from './services/auth-interceptor';
+import { RegisterComponent } from './register/register.component';
 
 //import { RouterModule, Routes } from '@angular/router';
 
@@ -40,7 +42,8 @@ import { AuthenticationService } from './authentication.service';
     EditComponent,
     BugDetailsComponent,
     IssuesComponent,
-    HeaderComponent
+    HeaderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,10 @@ import { AuthenticationService } from './authentication.service';
     FormsModule
     
   ],
-  providers: [BugService, AuthenticationService],
+  providers: [BugService, AuthenticationService, { provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

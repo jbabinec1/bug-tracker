@@ -156,7 +156,7 @@ app.get('/users/', protect, (request, res, err) => {
 
 
 //Signup user
-router.route('/signup/').post((req, res) => {
+router.route('/signup').post((req, res) => {
   let user = new User({
     name: req.body.name,
     platform:req.body.platform,
