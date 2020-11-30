@@ -4,11 +4,11 @@
    <!--- <mat-card> -->
      <div class="inner-create-container"> 
       <section class="mat-typography">
-     <div style="display: flex; justify-content: center;"> <h2 style="color: #ffffff">Create an account</h2> </div>
+     <div style="display: flex; justify-content: center;"> <h2 style="color: #ffffff">Login</h2> </div>
       </section>
       <mat-divider></mat-divider>
       <br>
-      <form [formGroup]="registerUser" class="create-form">
+      <form [formGroup]="loginUser" class="create-form">
 
         <div class="field-container"> 
           <label class="label-name">Username</label>
@@ -16,16 +16,6 @@
         </div>
 
       
-      <div class="field-container"> 
-        <div style="width: 100%"> 
-          <label class="label-name"> Platform </label>
-          <select placeholder="Platform type" formControlName="platform" #platform style='max-width:100%; width: 100%; padding: 6px 12px;'>
-            <option value="" disabled selected> - </option>
-            <option value="Xbox"> Xbox</option>
-            <option value="PlayStation">PlayStation</option>
-            <option value="PC">PC</option>
-          </select>
-        </div> </div>
 
           <div class="field-container"> 
             <label class="label-name"> Password </label>
@@ -36,7 +26,7 @@
 
         <br><br>
         <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-        <button style="background-color:#f2a900; color:000"type="submit" (click)="addUser()" [disabled]="registerUser.pristine || registerUser.invalid" mat-raised-button color="primary">Submit</button>
+        <button style="background-color:#f2a900; color:000"type="submit" (click)="login()" [disabled]="loginUser.pristine || loginUser.invalid" mat-raised-button color="primary">Submit</button>
       </form>
 
       <!--(click)="addUser(name.value, password.value, platform.value)"-->

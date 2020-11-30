@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 
 import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
-
+import { AuthenticationService } from '.././../authentication.service';
 
 @Component({
   selector: 'app-list',
@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
   displayedColumns = ['title', 'type', 'status', 'reporter'];
   
 
-  constructor(private http: HttpClient, private bugService: BugService, private router: Router) { }
+  constructor(private http: HttpClient, private bugService: BugService, private router: Router, public authService:AuthenticationService) { }
 
   @Input() public bugData: any = [];
   @Input() public commentData: any = [];
@@ -39,6 +39,12 @@ export class ListComponent implements OnInit {
     this.fetchBugs();
     //this.fetchComment(this.id, this.reporter, this.description);
  
+  }
+
+
+  logout() {
+    this.authService.logout();
+    window.location.reload();
   }
 
 

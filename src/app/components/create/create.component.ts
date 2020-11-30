@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BugService } from '../.././../../src/app/services/bug.service';
 import { Bug  } from '../../../app/bug';
+import { AuthenticationService } from '../../authentication.service';
+import { Username } from '../../models/username';
 
 
 @Component({
@@ -15,13 +17,15 @@ export class CreateComponent implements OnInit {
   createForm: FormGroup;
   time = new Date().toString();
   bug: Bug[];
+  //username: Username; 
+  @Input() public username: Username;
 
   currentDate() {
     const currentDate = new Date();
     return currentDate.toISOString().substring(0,10);
   }
 
-  constructor(private bugService: BugService, private fb: FormBuilder, private router: Router) { 
+  constructor(private bugService: BugService, private fb: FormBuilder, private router: Router, public authService: AuthenticationService) { 
 
     this.createForm = this.fb.group({
       title: ['', Validators.required],

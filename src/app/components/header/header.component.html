@@ -39,15 +39,27 @@
        
       </a>
     </li>
+    
+    
 
+    <div class="nav-list" style="display:flex">   
+      <li class="nav-header_item item-box">
+          <a routerLink="/list" routerLinkActive="active" class="fill-div linky2"style="text-decoration: none;">Issues</a>
+        </li>
+          </div>
+    
+          <div *ngIf="this.authService.isLoggedIn() === true" class="nav-list" style="display: flex;"> 
+            <li class="nav-header_item item-box"> 
+              <a (click)="logout()" class="fill-div linky2" style="text-decoration: none;">Logout</a>
+            </li>
+          </div>
 
-<div class="nav-list" style="display:flex">   
-    <li class="nav-header_item item-box">
-        <a routerLink="/list" routerLinkActive="active" class="fill-div linky2"style="text-decoration: none;">Issues</a>
-      </li>
-        </div>
-
+  
 
   </ul>
 
+
 </div>
+
+
+

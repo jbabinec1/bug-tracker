@@ -54,7 +54,7 @@
   color: #ffffff;
 }
 
-.bug-list-container .table a:visited {
+.bug-list-container .table a.details-link {
   color: #D3D3D3;
 }
 

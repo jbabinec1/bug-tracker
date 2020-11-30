@@ -21,19 +21,55 @@ export class AuthenticationService {
   }
 
 
-registerUser(name, password, platform): Observable<any> {
+   isLoggedIn():boolean {
+    let authToken = localStorage.getItem('access_token');
+    return (authToken !== null) ? true : false;
+  }
 
-  const user = {
+
+
+
+registerUser(username:Username): Observable<any> {  
+ /* const user = {
     name: name,
     password: password,
     platform: platform,
-  };
+  };*/
 
-  return this.http.post('http://localhost:3000/signup', user).pipe(
+  return this.http.post('http://localhost:3000/signup', username).pipe(
     catchError(this.handleError)
 )
 
 }
+
+/*
+loginUser(username:Username): Observable<any> {  
+ 
+   return this.httpClient.post<any>('http://localhost:3000/login/', username)
+
+} */
+
+
+logout() {
+  if (localStorage.removeItem('access_token') == null) {
+    this.router.navigate(['/list']);
+  }
+}
+   
+   
+
+
+
+ loginUser(username: Username) {
+  return this.http.post<any>('http://localhost:3000/login/', username)
+    .subscribe((res: any) => {
+      localStorage.setItem('access_token', res.token)
+    /*  this.getUserProfile(res._id).subscribe((res) => {
+        this.currentUser = res;
+        this.router.navigate(['users/profile/' + res.msg._id]);
+      }) */
+    })
+}  
 
 
 

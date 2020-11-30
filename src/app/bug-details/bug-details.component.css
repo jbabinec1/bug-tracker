@@ -121,6 +121,10 @@ td, th {
   padding-top: 32px;
 }
 
+.outer-comments-container .comment-container .comment-form-container {
+  padding-left: 23px;
+}
+
 .outer-comments-container .comment-container .comment {
   padding-top: 8px;
 }

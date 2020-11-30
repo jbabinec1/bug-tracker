@@ -27,6 +27,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthenticationService } from './authentication.service';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 //import { RouterModule, Routes } from '@angular/router';
 
@@ -43,7 +44,8 @@ import { RegisterComponent } from './register/register.component';
     BugDetailsComponent,
     IssuesComponent,
     HeaderComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
