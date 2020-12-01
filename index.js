@@ -209,7 +209,8 @@ router.route('/login/').post(async(req, res) => {
 
   res.status(200).json({
     status: 'success',
-    token
+    token,
+    name
   })
  
 

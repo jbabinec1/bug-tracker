@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 //import { registerLocaleData } from '@angular/common';
@@ -14,6 +14,8 @@ export class AuthenticationService {
 
 
   constructor(private httpClient: HttpClient,public router: Router, private http: HttpClient) { }
+
+  @Input() public res: any = [];
 
 
   getAccessToken() {
@@ -60,7 +62,7 @@ logout() {
 
 
 
- loginUser(username: Username) {
+ loginUser(username: Username){
   return this.http.post<any>('http://localhost:3000/login/', username)
     .subscribe((res: any) => {
       localStorage.setItem('access_token', res.token)

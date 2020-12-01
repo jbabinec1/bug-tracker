@@ -48,12 +48,19 @@
         </li>
           </div>
     
-          <div *ngIf="this.authService.isLoggedIn() === true" class="nav-list" style="display: flex;"> 
+          <div *ngIf="this.authService.isLoggedIn() === true;" class="nav-list" style="display: flex;"> 
             <li class="nav-header_item item-box"> 
               <a (click)="logout()" class="fill-div linky2" style="text-decoration: none;">Logout</a>
             </li>
           </div>
 
+          <div *ngIf="this.authService.isLoggedIn() === false;" class="nav-list" style="display: flex;"> 
+            <li class="nav-header_item_login item-box"> 
+              <a (click)="login()" class="fill-div linky2" style="text-decoration: none;">Login</a>
+            </li>
+          </div>
+
+          <div> {{res.name}}</div>
   
 
   </ul>
