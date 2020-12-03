@@ -10,10 +10,11 @@
       <br>
       <form [formGroup]="createForm" class="create-form">
 
-        <div class="field-container"> 
+        
+        <div class="field-container" style="display:none"> 
           <label class="label-name">Your name</label>
-        <input placeholder="Name" formControlName="reporter" #reporter>
-        </div>
+        <input placeholder="Name" formControlName="reporter" #reporter readonly>
+        </div> 
 
       
       <div class="field-container"> 

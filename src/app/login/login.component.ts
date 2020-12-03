@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '.././authentication.service';
 import { Router } from '@angular/router';
 import { Username } from '.././models/username';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,14 @@ export class LoginComponent implements OnInit {
 
   loginUser: FormGroup;
 
+  @Output() messageEvent = new EventEmitter<string>();
+
+  @Input() public res: any = [];
+  public Use: any;
+
   constructor(private formbuilder: FormBuilder, private authService: AuthenticationService, private router: Router) { 
+
+   
 
     this.loginUser = this.formbuilder.group({
       name: ['', Validators.required],
@@ -24,21 +32,16 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    this.authService.loginUser(this.loginUser.value) 
-      this.router.navigate(['/list']);
+    this.authService.loginUser(this.loginUser.value);
+     this.router.navigate(['/list']);
       console.log('User logged in!');
   } 
 
 
+
+
   
- /* login() {
-    this.authService.loginUser(this.loginUser.value).subscribe((user: Username) => {
-      //this.router.navigate(['/list']);
-      console.log('User logged in!');
-      
-      
-    });
-  } */
+
 
 
 

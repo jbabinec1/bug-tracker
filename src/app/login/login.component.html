@@ -6,6 +6,7 @@
       <section class="mat-typography">
      <div style="display: flex; justify-content: center;"> <h2 style="color: #ffffff">Login</h2> </div>
       </section>
+    
       <mat-divider></mat-divider>
       <br>
       <form [formGroup]="loginUser" class="create-form">
@@ -26,7 +27,7 @@
 
         <br><br>
         <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-        <button style="background-color:#f2a900; color:000"type="submit" (click)="login()" [disabled]="loginUser.pristine || loginUser.invalid" mat-raised-button color="primary">Submit</button>
+        <button style="background-color:#f2a900; color:000" type="submit"  (click)="login()" [disabled]="loginUser.pristine || loginUser.invalid" mat-raised-button color="primary">Submit</button>
       </form>
 
       <!--(click)="addUser(name.value, password.value, platform.value)"-->

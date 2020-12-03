@@ -49,10 +49,14 @@ export class CreateComponent implements OnInit {
   }
 
 
+ userDisplayName = '';
 
   ngOnInit(): void { 
   const currentDate = new Date().toISOString().substring(0, 10);
   this.createForm.controls['status'].setValue(currentDate);
+
+  this.userDisplayName = localStorage.getItem('name');
+  this.createForm.controls['reporter'].setValue(this.userDisplayName);
   
   
   }

@@ -20,14 +20,18 @@ export class ListComponent implements OnInit {
 
   bug: Bug[]
   comment: Comment[];
-
+  loginUser: any;
   displayedColumns = ['title', 'type', 'status', 'reporter'];
   
 
-  constructor(private http: HttpClient, private bugService: BugService, private router: Router, public authService:AuthenticationService) { }
+  constructor(private http: HttpClient, private bugService: BugService, private router: Router, public authService:AuthenticationService) {
+
+   }
+   
 
   @Input() public bugData: any = [];
   @Input() public commentData: any = [];
+  //@Input() public res: any = [];
 
   id;
   reporter;

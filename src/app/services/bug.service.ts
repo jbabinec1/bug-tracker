@@ -53,7 +53,7 @@ addBug(title, reporter, description, type, status) {
     type: type,
     status: status
   };
-  return this.http.post('/bugs/add', bug);   //  'http://localhost:3000/bugs/add'
+  return this.http.post('http://localhost:3000/bugs/add', bug);   //  'http://localhost:3000/bugs/add'    //'/bugs/add'
 }
 
 

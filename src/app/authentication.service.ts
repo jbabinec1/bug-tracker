@@ -31,25 +31,16 @@ export class AuthenticationService {
 
 
 
-registerUser(username:Username): Observable<any> {  
- /* const user = {
-    name: name,
-    password: password,
-    platform: platform,
-  };*/
 
+registerUser(username:Username): Observable<any> {  
+ 
   return this.http.post('http://localhost:3000/signup', username).pipe(
     catchError(this.handleError)
 )
 
 }
 
-/*
-loginUser(username:Username): Observable<any> {  
- 
-   return this.httpClient.post<any>('http://localhost:3000/login/', username)
 
-} */
 
 
 logout() {
@@ -57,21 +48,44 @@ logout() {
     this.router.navigate(['/list']);
   }
 }
+
+logoutName() {
+  localStorage.clear();   
+  this.router.navigate(['/list']);
+}
+
+
    
-   
 
 
-
- loginUser(username: Username){
+loginUser(username: Username){
   return this.http.post<any>('http://localhost:3000/login/', username)
     .subscribe((res: any) => {
       localStorage.setItem('access_token', res.token)
-    /*  this.getUserProfile(res._id).subscribe((res) => {
-        this.currentUser = res;
-        this.router.navigate(['users/profile/' + res.msg._id]);
-      }) */
-    })
+      localStorage.setItem('name', res.name)
+      
+    }) 
 }  
+   
+
+
+/*
+ loginUser(username: Username){
+
+  return new Promise((resolve, reject) => {
+   this.http.post<any>('http://localhost:3000/login/', username)
+    .subscribe((res: any) => {
+    let token =  localStorage.setItem('access_token', res.token)
+    localStorage.setItem('name', res.name)
+
+    resolve(token);
+    
+    })
+
+  })
+
+
+}  */
 
 
 

@@ -192,4 +192,19 @@ svg.logo_header {
 #path0 {
   fill: #f2a900;
 }
+
+.authentication-user-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.username {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 14px;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
 /*# sourceMappingURL=header.component.css.map */
