@@ -32,10 +32,23 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    this.authService.loginUser(this.loginUser.value);
-     this.router.navigate(['/list']);
-      console.log('User logged in!');
+    this.authService.loginUser(this.loginUser.value)
+    //this.redirectTo('/list') 
+   
+      this.router.navigate(['/list']);
+       
+     /*.then(() => {
+     window.location.reload();
+     }) 
+      console.log('User logged in!'); */
+      
   } 
+
+
+  redirectTo(uri:string) {
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+   this.router.navigate([uri]));
+  }
 
 
 

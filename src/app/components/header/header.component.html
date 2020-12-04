@@ -65,11 +65,11 @@
           </div>
 
  
-       <div *ngIf="this.authService.isLoggedIn() === true;" class="username"> Hello {{userDisplayName}}</div>
+       <div *ngIf="this.getName() && this.authService.isLoggedIn()" class="username"> {{ this.getName() }}   </div>
 
       </div>
 
-
+ 
   </ul>
 
 

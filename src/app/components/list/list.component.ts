@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BugService } from '../.././../../src/app/services/bug.service';
 import { Observable} from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Bug  } from '../../../app/bug';
 import { Comment  } from '../../../app/comment';
 import { RouterModule } from '@angular/router';
@@ -26,7 +26,10 @@ export class ListComponent implements OnInit {
 
   constructor(private http: HttpClient, private bugService: BugService, private router: Router, public authService:AuthenticationService) {
 
-   }
+   
+
+
+  }
    
 
   @Input() public bugData: any = [];
@@ -42,6 +45,16 @@ export class ListComponent implements OnInit {
 
     this.fetchBugs();
     //this.fetchComment(this.id, this.reporter, this.description);
+
+   /* if (!localStorage.getItem('firstReload') || localStorage.getItem('firstReload') == 'true') {
+      localStorage.setItem('firstReload', 'false');
+      window.location.reload();
+    } else {
+      localStorage.setItem('firstReload', 'true');
+    } */
+
+
+    
  
   }
 

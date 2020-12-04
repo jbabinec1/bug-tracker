@@ -45,8 +45,15 @@ registerUser(username:Username): Observable<any> {
 
 logout() {
   if (localStorage.removeItem('access_token') == null) {
-    this.router.navigate(['/list']);
+    //this.router.navigate(['/list']);
+    
+ 
+    
   }
+}
+
+login2(){
+  localStorage.removeItem('access_token')
 }
 
 logoutName() {
@@ -65,6 +72,7 @@ loginUser(username: Username){
       localStorage.setItem('name', res.name)
       
     }) 
+   
 }  
    
 

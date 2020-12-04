@@ -34,29 +34,36 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.userDisplayName = localStorage.getItem('name');
-      
+    //this.userDisplayName = localStorage.getItem('name');
+   
   }
 
- /*
-  removeUsernameLogout() {
-    //if (this.logout == true)
-    localStorage.removeItem('access_token') 
-  } */
+
+
+
   
+  getName() {
+  return localStorage.getItem('name');
+  }
 
 
 
   logout() {
     this.authService.logout();
-    window.location.reload();
+     window.location.reload();
+
   }
 
   
 
   login() {
-    this.router.navigate(['/login']);
-    
+    //this.authService.login2()  
+    this.router.navigate(['/login']) 
+     
   }
+
+
+  
+
 
 }
