@@ -58,7 +58,11 @@ export class HeaderComponent implements OnInit {
 
   login() {
     //this.authService.login2()  
-    this.router.navigate(['/login']) 
+    this.router.navigate(['/login']) .then(() => {
+      window.location.reload();
+      localStorage.clear();
+    });
+    
      
   }
 

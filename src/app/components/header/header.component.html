@@ -64,6 +64,13 @@
             </li>
           </div>
 
+
+        <!----  <div *ngIf="this.authService.isLoggedIn() === false;" style="display: flex;"> 
+            <li class="nav-header_item_login item-box"> 
+              <a (click)="login()"  class="fill-div linky2" style="text-decoration: none;">Register</a>
+            </li>
+          </div> -->
+
  
        <div *ngIf="this.getName() && this.authService.isLoggedIn()" class="username"> {{ this.getName() }}   </div>
 

@@ -28,6 +28,7 @@ import { AuthenticationService } from './authentication.service';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { LoginInterceptor } from '././login-interceptor';
 
 //import { RouterModule, Routes } from '@angular/router';
 
@@ -68,7 +69,7 @@ import { LoginComponent } from './login/login.component';
     
   ],
   providers: [BugService, AuthenticationService, { provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
+    useClass: LoginInterceptor,
     multi: true
   }],
   bootstrap: [AppComponent]

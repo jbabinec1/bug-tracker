@@ -36,7 +36,7 @@
 
         <br><br>
         <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-        <button style="background-color:#f2a900; color:000"type="submit" (click)="addUser()" [disabled]="registerUser.pristine || registerUser.invalid" mat-raised-button color="primary">Submit</button>
+        <button style="background-color:#f2a900; color:000"type="submit" routerLink="/login" (click)="addUser()" [disabled]="registerUser.pristine || registerUser.invalid" mat-raised-button color="primary">Submit</button>
       </form>
 
       <!--(click)="addUser(name.value, password.value, platform.value)"-->

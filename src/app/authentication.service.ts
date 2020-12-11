@@ -46,6 +46,7 @@ registerUser(username:Username): Observable<any> {
 logout() {
   if (localStorage.removeItem('access_token') == null) {
     //this.router.navigate(['/list']);
+    localStorage.clear(); 
     
  
     
@@ -70,6 +71,7 @@ loginUser(username: Username){
     .subscribe((res: any) => {
       localStorage.setItem('access_token', res.token)
       localStorage.setItem('name', res.name)
+      //localStorage.setItem('status', res.status)
       
     }) 
    

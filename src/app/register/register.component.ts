@@ -25,8 +25,9 @@ export class RegisterComponent implements OnInit {
    }
 
    addUser() {
-    this.authService.registerUser(this.registerUser.value).subscribe((user: Username) => {
+    this.authService.registerUser(this.registerUser.value).subscribe((user: any) => {
       //this.router.navigate(['/list']);
+      localStorage.setItem('name', user.data.user.name)
       console.log('User added!');
       
       

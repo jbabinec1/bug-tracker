@@ -9,29 +9,41 @@
     
       <mat-divider></mat-divider>
       <br>
-      <form [formGroup]="loginUser" class="create-form">
+      <form (keydown.enter)="$event.preventDefault()" [formGroup]="loginUser" class="create-form" (ngSubmit)="login()">
+
+        
+        <p style="color:red" *ngIf="isStatus()">Incorrect username or password</p>
 
         <div class="field-container"> 
           <label class="label-name">Username</label>
-        <input placeholder="Username" formControlName="name" #name>
+          <input *ngIf="isName() == true" placeholder="username" formControlName="name" #name>
+
+        <input *ngIf="isName() == false" placeholder="username" required 
+        value="{{getName()}}" formControlName="name" #name>
         </div>
 
       
-
           <div class="field-container"> 
             <label class="label-name"> Password </label>
-          <input style="padding: 6px 12px" placeholder="password" formControlName="password" #password>
-          </div>          
+          <input style="padding: 6px 12px" placeholder="password" required 
+          formControlName="password" #password>
+          </div>   
+
 
         
 
         <br><br>
         <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-        <button style="background-color:#f2a900; color:000" type="submit"  (click)="login()" [disabled]="loginUser.pristine || loginUser.invalid" mat-raised-button color="primary">Submit</button>
+        <button style="background-color:#f2a900; color:000" type="submit"  (click)="login()" [disabled]="!loginUser.valid" mat-raised-button color="primary">Submit</button>
       </form>
 
       <!--(click)="addUser(name.value, password.value, platform.value)"-->
 
+      <div class="register">
+
+        <button style="background-color:#f2a900; color:000" routerLink="/register" mat-raised-button color="primary">Register</button>
+
+      </div>
 
     </div> <!--End of inner container -->
 

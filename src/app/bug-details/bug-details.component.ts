@@ -10,6 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
+import { AuthenticationService } from '../authentication.service';
 
 
 @Component({
@@ -34,11 +35,12 @@ export class BugDetailsComponent implements OnInit {
   //createComment: FormGroup;
 
   commentForm: FormGroup;
+  userDisplayName: string;
   
   
   
 
-  constructor(private http: HttpClient, private bugService: BugService, private router: Router,  private route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private http: HttpClient, private bugService: BugService, private router: Router,  private route: ActivatedRoute, private fb: FormBuilder, private authService: AuthenticationService) {
 
 
    //this.createCommentForm();
@@ -59,7 +61,13 @@ export class BugDetailsComponent implements OnInit {
   
 
 
-  
+  canComment(){
+    if(this.authService.isLoggedIn() !== true) {
+      window.alert("Please log in!")
+      this.router.navigate(['/login'])
+    }
+
+  }
   
   
   
@@ -74,6 +82,12 @@ export class BugDetailsComponent implements OnInit {
     //this.fetchComments();
     
   })  
+
+  this.userDisplayName = localStorage.getItem('name');
+  this.commentForm.controls['commenter'].setValue(this.userDisplayName);
+
+
+
   }
 
 // Fetch all bugs
@@ -126,11 +140,16 @@ fetchComments(){
 
     let comment = this.commentForm.get('comment').value; 
     let commenter = this.commentForm.get('commenter').value; 
+    if(this.authService.isLoggedIn() == true) {
     this.bugService.postComment(id, comment, commenter).subscribe(data => {
       this.fetchBug(id);
       const index = this.newComment.indexOf(id);
       this.newComment.splice(index, 1);
     })
+
+  } else {
+    window.alert("Please log in!")
+  }
 
   }
 

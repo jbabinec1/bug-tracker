@@ -36,7 +36,7 @@ getComments(): Observable<any> {
 
 
 getBugById(id) {
-  return this.http.get(`/bugs/${id}`); //* http://localhost:3000/bugs/${id}
+  return this.http.get(`http://localhost:3000/bugs/${id}`); //* http://localhost:3000/bugs/${id}  && /bugs/${id}
 }
 
 getCommentById(id){
@@ -63,7 +63,7 @@ addBug(title, reporter, description, type, status) {
     reporter: reporter,
     description: description,
   };
-  return this.http.post(`/comments/add`, comment);  //  /comments/add
+  return this.http.post(`http://localhost:3000/comments/add`, comment);  //  /comments/add
 } 
 
 
@@ -77,7 +77,7 @@ const commentData = {
   comment: comment,
   commenter: commenter
 }
-return this.http.post(`/comment`, commentData);  // http://localhost:3000/comment 
+return this.http.post(`http://localhost:3000/comment`, commentData);  // http://localhost:3000/comment && /comment
 } 
 
 
