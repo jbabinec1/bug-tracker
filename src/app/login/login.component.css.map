@@ -1,8 +1,8 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAEA,AAAA,WAAW,CAAC;EACR,aAAa,EAAE,GAAG;EAClB,KAAK,EAAE,OAAO;CAEjB;;AAED,AAAA,gBAAgB,CAAC;EACb,cAAc,EAAE,IAAI;EACpB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CACzB;;AAED,AAAA,MAAM,CAAC;EACH,SAAS,EAAE,KAAK;CACnB;;AAED,AAAA,SAAS,CAAC;EACN,WAAW,EAAE,IAAI;CACpB;;AAED,AAAA,iBAAiB,CAAC;EACd,WAAW,EAAE,IAAI;CACpB;;AAED,AAAA,aAAa,CAAC;EACV,KAAK,EAAE,OAAO;EACd,aAAa,EAAE,CAAC;CACnB",
     "sources": [
-        "login.component.sass"
+        "login.component.scss"
     ],
     "names": [],
     "file": "login.component.css"

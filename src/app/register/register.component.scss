@@ -1,0 +1,22 @@
+.outer-form-wrapper{
+   
+    display: flex;
+    justify-content: center;
+}  
+
+.input {
+    font-size: large;
+}
+
+.label-name {
+    padding-right: 5px;
+    color: #ADADAD;
+  
+}
+
+.field-container {
+    padding: 9px;
+    display: flex;
+    flex-direction: column;
+    padding-left:0;
+}

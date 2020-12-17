@@ -8,15 +8,32 @@
       </section>
       <mat-divider></mat-divider>
       <br>
+
+      <div class="outer-form-wrapper"> 
+        <div class="form-wrapper"> 
       <form [formGroup]="registerUser" class="create-form">
 
         <div class="field-container"> 
+
+        <!----  <label class="label-name"> Platform </label>
+         Not sure if this is even needed.. <div class="field-container"> 
+            
+            <div style="width: 100%"> 
+              <select placeholder="Platform type" formControlName="platform" #platform style='max-width:100%; width: 100%; padding: 6px 12px;'>
+                <option value="" disabled selected> - </option>
+                <option value="Xbox"> Xbox</option>
+                <option value="PlayStation">PlayStation</option>
+                <option value="PC">PC</option>
+              </select>
+            </div> </div> -->
+
+
           <label class="label-name">Username</label>
-        <input placeholder="Username" formControlName="name" #name>
+        <input class="input" placeholder="Username" formControlName="name" #name>
         </div>
 
       
-      <div class="field-container"> 
+  <!----   <div class="field-container"> 
         <div style="width: 100%"> 
           <label class="label-name"> Platform </label>
           <select placeholder="Platform type" formControlName="platform" #platform style='max-width:100%; width: 100%; padding: 6px 12px;'>
@@ -25,11 +42,11 @@
             <option value="PlayStation">PlayStation</option>
             <option value="PC">PC</option>
           </select>
-        </div> </div>
+        </div> </div> -->
 
           <div class="field-container"> 
             <label class="label-name"> Password </label>
-          <input style="padding: 6px 12px" placeholder="password" formControlName="password" #password>
+          <input class="input" style="padding: 6px 12px" placeholder="password" formControlName="password" #password>
           </div>          
 
         
@@ -40,6 +57,11 @@
       </form>
 
       <!--(click)="addUser(name.value, password.value, platform.value)"-->
+
+    </div> <!--End of form wrapper-->
+      </div> <!--End of outer form wrapper -->
+
+
 
 
     </div> <!--End of inner container -->

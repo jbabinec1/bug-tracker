@@ -1,53 +1,70 @@
-
 <div class="outer-create-container">
+  <br>
+ <!--- <mat-card> -->
+   <div class="inner-create-container"> 
+    <section class="mat-typography">
+   <div style="display: flex; justify-content: center;"> <h2 style="color: #ffffff">Login</h2> </div>
+    </section>
+  
+    <mat-divider></mat-divider>
     <br>
-   <!--- <mat-card> -->
-     <div class="inner-create-container"> 
-      <section class="mat-typography">
-     <div style="display: flex; justify-content: center;"> <h2 style="color: #ffffff">Login</h2> </div>
-      </section>
-    
-      <mat-divider></mat-divider>
-      <br>
-      <form (keydown.enter)="$event.preventDefault()" [formGroup]="loginUser" class="create-form" (ngSubmit)="login()">
-
-        
-        <p style="color:red" *ngIf="isStatus()">Incorrect username or password</p>
-
-        <div class="field-container"> 
-          <label class="label-name">Username</label>
-          <input *ngIf="isName() == true" placeholder="username" formControlName="name" #name>
-
-        <input *ngIf="isName() == false" placeholder="username" required 
-        value="{{getName()}}" formControlName="name" #name>
-        </div>
+   <div class="outer-form-wrapper" style="display: flex; justify-content: center;"> 
+    <div class="form-wrapper"> 
+    <form (keydown.enter)="$event.preventDefault()" [formGroup]="loginUser" class="create-form" (ngSubmit)="login()">
 
       
-          <div class="field-container"> 
-            <label class="label-name"> Password </label>
-          <input style="padding: 6px 12px" placeholder="password" required 
-          formControlName="password" #password>
-          </div>   
+      <p style="color:red" *ngIf="isStatus()">Incorrect username or password</p>
 
+      <div class="field-container"> 
+        <label class="label-name">Username</label>
+        <input class="input" *ngIf="isName() == true" placeholder="username" formControlName="name" #name>
 
-        
-
-        <br><br>
-        <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-        <button style="background-color:#f2a900; color:000" type="submit"  (click)="login()" [disabled]="!loginUser.valid" mat-raised-button color="primary">Submit</button>
-      </form>
-
-      <!--(click)="addUser(name.value, password.value, platform.value)"-->
-
-      <div class="register">
-
-        <button style="background-color:#f2a900; color:000" routerLink="/register" mat-raised-button color="primary">Register</button>
-
+      <input *ngIf="isName() == false" placeholder="username" required 
+      value="{{getName()}}" formControlName="name" #name>
       </div>
 
-    </div> <!--End of inner container -->
+    
+        <div class="field-container"> 
+          <label class="label-name"> Password </label>
+        <input class="input" style="padding: 3px 4px" placeholder="password" required 
+        formControlName="password" #password>
+        </div>   
+
+
+      
+
+      <br><br>
+      <!---- Back btn looks bad
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp; -->
+
+      <button style="background-color:#f2a900; color:000; width: 100%" type="submit"  (click)="login()" [disabled]="!loginUser.valid" mat-raised-button color="primary">Submit</button>
+    </form>
+
+  <!----  </div>
+  </div> -->
+
+    <!--(click)="addUser(name.value, password.value, platform.value)"-->
+
+    <div class="register-wrapper"> 
+    <div>
+      <p class="register-now">Don't have an account? Register now!</p>
+    </div>
+
+    <div class="register">
+
+      <button style="background-color:#f2a900; color:000; width:100%;" routerLink="/register" mat-raised-button color="primary">Register</button>
+
+    </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+  </div> <!--End of inner container -->
 
 <!--</mat-card> -->
 
 
-  </div>
+</div>
