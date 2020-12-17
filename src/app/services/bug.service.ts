@@ -26,7 +26,7 @@ export class BugService {
 //http://localhost:3000/bugs/
 getBugs(): Observable<any> {
 let getHeaders = new HttpHeaders({'CONTENT-TYPE': 'application/json'}); 
-return this.http.get('http://localhost:3000/bugs/');    // http://localhost:3000/bugs/
+return this.http.get('/bugs/');    // http://localhost:3000/bugs/
 } 
 
 getComments(): Observable<any> {
@@ -36,7 +36,7 @@ getComments(): Observable<any> {
 
 
 getBugById(id) {
-  return this.http.get(`http://localhost:3000/bugs/${id}`); //* http://localhost:3000/bugs/${id}  && /bugs/${id}
+  return this.http.get(`/bugs/${id}`); //* http://localhost:3000/bugs/${id}  && /bugs/${id}
 }
 
 getCommentById(id){
@@ -53,7 +53,7 @@ addBug(title, reporter, description, type, status) {
     type: type,
     status: status
   };
-  return this.http.post('http://localhost:3000/bugs/add', bug);   //  'http://localhost:3000/bugs/add'    //'/bugs/add'
+  return this.http.post('/bugs/add', bug);   //  'http://localhost:3000/bugs/add'    //'/bugs/add'
 }
 
 
@@ -63,7 +63,7 @@ addBug(title, reporter, description, type, status) {
     reporter: reporter,
     description: description,
   };
-  return this.http.post(`http://localhost:3000/comments/add`, comment);  //  /comments/add
+  return this.http.post(`/comments/add`, comment);  //  /comments/add
 } 
 
 
@@ -77,7 +77,7 @@ const commentData = {
   comment: comment,
   commenter: commenter
 }
-return this.http.post(`http://localhost:3000/comment`, commentData);  // http://localhost:3000/comment && /comment
+return this.http.post(`/comment`, commentData);  // http://localhost:3000/comment && /comment
 } 
 
 

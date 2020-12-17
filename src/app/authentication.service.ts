@@ -34,7 +34,7 @@ export class AuthenticationService {
 
 registerUser(username:Username): Observable<any> {  
  
-  return this.http.post('http://localhost:3000/signup', username).pipe(
+  return this.http.post('/signup', username).pipe(
     catchError(this.handleError)
 )
 
@@ -67,7 +67,7 @@ logoutName() {
 
 
 loginUser(username: Username){
-  return this.http.post<any>('http://localhost:3000/login/', username)
+  return this.http.post<any>('/login/', username)
     .subscribe((res: any) => {
       localStorage.setItem('access_token', res.token)
       localStorage.setItem('name', res.name)
